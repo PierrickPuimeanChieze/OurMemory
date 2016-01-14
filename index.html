@@ -1,0 +1,81 @@
+<html>
+<head>
+    <style type="text/css">
+        body {
+            background-color: gray;
+        }
+
+        /* classe destiné a l'élément contenant une carte. Son image de backgroud sera le dos de la carte*/
+        .image-cell {
+            background-image: url("images/sad/background-sad.png");
+        }
+
+        /* Cette classe est destiné aux images contenant les cartes, quand elles sont face cachée
+         Dans cet état elles sont invisibles, laissant voir l'image de l'élément les contenant. Cf. la classe image-cell*/
+        img.back-visible {
+            /* On utilise pas cette classe, parce que si un élément a sa visibility mise à hidden, il ne reçoit plus les
+            événement de souris. Et ça serait problématique :) */
+            /*visibility: hidden; */
+            /*La on colle l'opacité au minimum. L'élément sera invisible, mais toujours présent pour recevoir les événements*/
+            opacity: 0.0;
+        }
+
+        /* Cette classe est destiné aux images contenant les cartes, quand elles face visibles
+         Dans cet état elles sont invisibles, laissant voir l'image de l'élément les contenant. Cf. la classe image-cell*/
+        img.front-visible {
+            opacity: 1;
+        }
+    </style>
+
+    <script type="application/javascript">
+        // Cette méthode est destiné à être appellée quand la page à fini de se charger
+        // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
+        function init() {
+            //On récupère tous les éléments de type card
+            var cards = document.getElementsByClassName("card");
+            //Et pour chacun d'entre eux
+            var i;
+            for (i = 0; i < cards.length; i++) {
+                //On fait en sorte que la méthode clickCard soit appellée quand on l'utilisateur clique dessus
+                cards[i].onclick = clickCard
+            }
+            //P.S. : on aurait pu effectuer cette association dans le code html directement, via l'attribut onclick
+            //Exemple : <img class="card back-visible" src="images/sad/Image-1.png" onclick="clickCard(event);"/>
+            //C'est toutefois à éviter quand tu fais une application complexe.
+            // En effet, cela mélange la présentation (le code HTML) et la logique (le code javascript)
+            // Ce qui pose pas mal de probleme pour maintenir ton application
+            //Par exemple, dans notre cas, c'est beaucoup plus facile de renommer la méthode clickCard()
+        }
+
+        //Cette méthode doit être appelée quand l'utilisateur clique sur une carte
+        function clickCard(mouseEvent) {
+            //On récupère l'élement sur lequel l'utilisateur a cliqué
+            cardElement = mouseEvent.target;
+            //Si les classes de cet element indique qu'elle était face cachée
+            if (cardElement.className == "card back-visible") {
+                //On la passe face visible
+                cardElement.className = "card front-visible";
+                //Sinon,
+            } else {
+//                On la passe face cachée
+                cardElement.className = "card back-visible"
+            }
+        }
+    </script>
+</head>
+<!--L'événément onload est appellée dès que le navigateur a fini de construire la page-->
+<body onload="init();">
+<table>
+    <tr>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-1.png"/></td>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-2.png"/></td>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-3.png"/></td>
+    </tr>
+    <tr>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-1.png"/></td>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-2.png"/></td>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-3.png"/></td>
+    </tr>
+</table>
+</body>
+</html>
