@@ -1,0 +1,33 @@
+
+body {
+        background-color: gray;
+    }
+
+    /* classe destiné a l'élément contenant une carte. Son image de backgroud sera le dos de la carte*/
+    .image-cell
+    {
+        background-image: url("../images/sad/background-sad.png");
+    }
+
+    /* Cette classe est destiné aux images contenant les cartes, quand elles sont face cachée
+    Dans cet état elles sont invisibles, laissant voir l'image de l'élément les contenant. Cf. la classe image-cell*/
+    img.back-visible
+    {
+        /* On utilise pas cette classe, parce que si un élément a sa visibility mise à hidden, il ne reçoit plus les
+        événement de souris. Et ça serait problématique :) */
+        /*visibility: hidden; */
+        /*La on colle l'opacité au minimum. L'élément sera invisible, mais toujours présent pour recevoir les événements*/
+        opacity: 0.0;
+    }
+
+    /* Cette classe est destiné aux images contenant les cartes, quand elles face visibles
+    Dans cet état elles sont invisibles, laissant voir l'image de l'élément les contenant. Cf. la classe image-cell*/
+
+    img.front-visible
+    {
+        opacity: 1;
+    }
+    img.pair-find
+    {
+        opacity: 1;
+    }
