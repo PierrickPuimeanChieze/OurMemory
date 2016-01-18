@@ -1,0 +1,30 @@
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="CSS/memory.css" />
+    <title>Mémory : Version d'essai, jeu</title>
+
+    <script type="application/javascript" src="script/memory.js"></script>
+</head>
+<!--L'événément onload est appellée dès que le navigateur a fini de construire la page-->
+<body onload="init();">
+    <p>Bienvenue <span id="prenom"></span>!</p>
+    <table>
+        <tr>
+            <td class="image-cell"><img class="card back-visible" src="images/sad/Image-1.png" id="card0"/></td>
+            <td class="image-cell"><img class="card back-visible" src="images/sad/Image-2.png" id="card1"/></td>
+            <td class="image-cell"><img class="card back-visible" src="images/sad/Image-3.png" id="card2"/></td>
+        </tr>
+        <tr>
+            <td class="image-cell"><img class="card back-visible" src="images/sad/Image-1.png" id="card3"/></td>
+            <td class="image-cell"><img class="card back-visible" src="images/sad/Image-2.png" id="card4"/></td>
+            <td class="image-cell"><img class="card back-visible" src="images/sad/Image-3.png" id="card5"/></td>
+        </tr>
+    </table>
+
+<input type="submit" id="start" name="start" value="Démarrer"/>
+<p id="timer"></p>
+
+</body>
+</html>

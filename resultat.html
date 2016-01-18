@@ -1,0 +1,26 @@
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>Mémory : Version d'essai, resultat</title>
+
+</head>
+
+<body>
+    <p>
+        Le jeu est terminer <span id="prenom"></span>. Vous avez trouver <span id="pairFind"></span> paire en <span id="pairTest"></span> essai et <span id="time"></span> s.
+    </p>
+
+    <script type="text/javascript">
+        var     compte
+        var     temp;
+
+        temp = location.search.substring(1);
+        temp = temp.substring(temp.indexOf("=")+1, temp.length);
+        compte = JSON.parse(window.localStorage.getItem(temp));
+        document.getElementById('prenom').innerHTML = compte.prenom;
+        document.getElementById('pairFind').innerHTML = compte.paireClassique;
+        document.getElementById('pairTest').innerHTML = compte.paireClassique + compte.echecClassique;
+        document.getElementById('time').innerHTML = compte.tempsClassique;
+    </script>
+</html>
