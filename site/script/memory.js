@@ -30,6 +30,7 @@ function init()
     //Et pour chacun d'entre eux
     var     i;
     var     start = document.getElementById("start");
+    var url = location.search
 
 
     for (i = 0; i < cards.length; i++)
@@ -44,8 +45,10 @@ function init()
     // Ce qui pose pas mal de probleme pour maintenir ton application
     //Par exemple, dans notre cas, c'est beaucoup plus facile de renommer la méthode clickCard()
 
-    start.onclick = starGame
-    id = location.search.substring(temp.indexOf("id=")+1)
+    start.onclick = starGame;
+    id = url.substring(url.indexOf("=")+1);
+    alert(url);
+    alert(id);
     compte = JSON.parse(window.localStorage.getItem(id));
     document.getElementById('prenom').innerHTML = compte.prenom;
 }
@@ -135,6 +138,6 @@ function endGame()
     compte.tempsClassique = time - remainingTime;
     val = JSON.stringify(compte);
     window.localStorage.setItem(String(compte.id), val);
-    alert("Félicitation, vous avez reussi");
+    alert("Fin de la partie");
     location.href=("resultat.html?id=" + compte.id)
 }
