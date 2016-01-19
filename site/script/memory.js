@@ -1,25 +1,31 @@
 
 
 var     cReturn;        //Variable pour connaitre le nombre de carte retourné
-var     nbCard;         //Variable indiquand le nombre de carte du jeu
+var     nbpair;         //Variable indiquand le nombre de paires de carte du jeu.Devrat peut être contenue
+                        // dans les parametre.
 var     pairFind;       //Variable indiquand le nombre de paire trouvé
 var     cardReturned;   //Variable memorisant la carte precedente retourné
-var     compte;
+var     compte;         //variable contenant toute les information du joueur
 var     nbtest;         //nombre de coup joué.
-var     gameStarted
-var     cards = document.getElementsByClassName("card");    //
-var     counter = 5;    //devra être contenue dans le compte admin au final
-var     time = 5;      //devra être contenue dans le compte admin au final
+var     gameStarted;    //indique si la partie est commencé ou pas.
+var     cards;          //contient les balise des cartes.
+var     counter;        //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
+                        //Devra être contenue dans le compte admin au final
+var     time;           //Durée de la partie en secondes. Devra être contenue dans le compte admin au final
 var     intervalId = null;
-var     remainingTime = time;
+var     remainingTime;  //temps restant
 
 
 cReturn         = 0;
-nbCard          = 6;
+nbpair          = 3;
 pairFind        = 0;
 nbtest          = 0;
 cardReturned    = null;
 gameStarted     = 0;
+cards           = document.getElementsByClassName("card");
+counter         = 2;
+time            = 30;
+remainingTime   = time;
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
 function init() 
@@ -29,9 +35,11 @@ function init()
     //r     cards = document.getElementsByClassName("card");
     //Et pour chacun d'entre eux
     var     i;
-    var     start = document.getElementById("start");
-    var url = location.search
+    var     start;
+    var     url;
 
+    start = document.getElementById("start");
+    url = location.search;
 
     for (i = 0; i < cards.length; i++)
     {
@@ -56,12 +64,12 @@ function init()
 //Cette méthode doit être appelée quand l'utilisateur clique sur une carte
 function clickCard(mouseEvent)
 {
-    var     val;
+    //var     val;
     //On récupère l'élement sur lequel l'utilisateur a cliqué
-    cardElement = mouseEvent.target;
+    var     cardElement = mouseEvent.target;
 
     //Si les classes de cet element indique qu'elle était face cachée
-    if (cardElement.className === "card back-visible" & gameStarted === 1)
+    if (cardElement.className === "card back-visible" && gameStarted === 1)
     {
         //On la passe face visible
         cardElement.className = "card front-visible";
@@ -82,18 +90,32 @@ function clickCard(mouseEvent)
         else
         {
             //alert("raté" + remainingTime + "s.");
-            cardReturned.className = "card back-visible"
-            cardElement.className = "card back-visible"
+            gameStarted = 0;                                            // je met la valeur à zero pour que le joueur
+                                                                        // ne puisse modifier les cartes pendant le
+                                                                        // moment ou on laisse la pair afficher
+            setTimeout(returnCard(), 2000, cardReturned, cardElement);  // laisse les carte retourné, à voir si on
+                                                                        // laisse la durée en dure on si on peut la
+                                                                        // la modifier avec une variable.
+            //cardReturned.className = "card back-visible";
+            //cardElement.className = "card back-visible";
+            //alert("raté" + remainingTime + "s.");
         }
         nbtest++;
         cardReturned = null;
         cReturn = 0;
     }
-    if (nbCard/2 === pairFind)
+    if (nbpair === pairFind)
         endGame();
 }
 
-function starGame(mouseEvent)                                       
+function    returnCard(cardReturned, cardElement)
+{
+    cardReturned.className = "card back-visible";
+    cardElement.className = "card back-visible";
+    gameStarted = 1;
+}
+
+function starGame()
 {
     //var   cards = document.getElementsByClassName("card");
     var     i;
@@ -132,12 +154,12 @@ function endTimer()
 
 function endGame()
 {
+    alert("Fin de la partie");
     clearInterval(intervalId);
     compte.paireClassique = pairFind;
     compte.echecClassique = nbtest - pairFind;
     compte.tempsClassique = time - remainingTime;
     val = JSON.stringify(compte);
     window.localStorage.setItem(String(compte.id), val);
-    alert("Fin de la partie");
     location.href=("resultat.html?id=" + compte.id)
 }
