@@ -55,8 +55,6 @@ function init()
 
     start.onclick = starGame;
     id = url.substring(url.indexOf("=")+1);
-    alert(url);
-    alert(id);
     compte = JSON.parse(window.localStorage.getItem(id));
     document.getElementById('prenom').innerHTML = compte.prenom;
 }
@@ -93,7 +91,7 @@ function clickCard(mouseEvent)
             gameStarted = 0;                                            // je met la valeur à zero pour que le joueur
                                                                         // ne puisse modifier les cartes pendant le
                                                                         // moment ou on laisse la pair afficher
-            setTimeout(returnCard(), 2000, cardReturned, cardElement);  // laisse les carte retourné, à voir si on
+            setTimeout(returnCard, 2000, cardReturned, cardElement);    // laisse les carte retourné, à voir si on
                                                                         // laisse la durée en dure on si on peut la
                                                                         // la modifier avec une variable.
             //cardReturned.className = "card back-visible";
