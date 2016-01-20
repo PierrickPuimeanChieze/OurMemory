@@ -15,6 +15,7 @@ var     time;           //Durée de la partie en secondes. Devra être contenue 
 var     intervalId = null;
 var     remainingTime;  //temps restant
 var     see;            //graine pour le placement alétoire, devra être dans la variable admin.
+var     config;
 
 
 cReturn         = 0;
@@ -32,7 +33,6 @@ see             = "test1";
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
 function init() 
 {
-    randomPlacementCards();
     var     id;
     //On récupère tous les éléments de type card
     //r     cards = document.getElementsByClassName("card");
@@ -43,6 +43,13 @@ function init()
 
     start = document.getElementById("start");
     url = location.search;
+
+    alert("test000");
+    id = url.substring(url.indexOf("=")+1);
+    compte = JSON.parse(window.localStorage.getItem(id));
+    config = JSON.parse(window.localStorage.getItem("0"));
+    randomPlacementCards();
+    alert("test100");
 
     for (i = 0; i < cards.length; i++)
     {
@@ -58,8 +65,6 @@ function init()
     //Par exemple, dans notre cas, c'est beaucoup plus facile de renommer la méthode clickCard()
 
     start.onclick = starGame;
-    id = url.substring(url.indexOf("=")+1);
-    compte = JSON.parse(window.localStorage.getItem(id));
     document.getElementById('prenom').innerHTML = compte.prenom;
 }
 
@@ -177,10 +182,13 @@ function randomPlacementCards()
 
     placedImg = {};
 
+
+    alert("test010");
     for (img=1; img <= nbpair; img++)
     {
         placedImg[img] = 0;
     }
+    alert("test011");
 
     Math.seedrandom(see);
 
@@ -189,14 +197,21 @@ function randomPlacementCards()
         img = getRandomIntInclusive(1, nbpair);
         if (placedImg[img] < 2)
         {
-            cards[placedCard].src = "images/sad/Image-" + img + ".png";
+            cards[placedCard].src = "images/" + config.version + "/Image-" + img + ".png";
             placedImg[img]++;
             placedCard++;
         }
     }
+    alert("test019");
 }
 
 function getRandomIntInclusive(min, max)
 {
     return Math.floor(Math.random() * (max - min +1)) + min;
+}
+
+function initCSS()
+{
+    //document.getElementsByClassName("image-cell").background-image = url("../images/" + config.version + "/background.png");
+    document.getElementById("version").href = "CSS/memory" + config.version + ".css"
 }

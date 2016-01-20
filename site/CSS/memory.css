@@ -3,11 +3,8 @@ body {
         background-color: gray;
     }
 
-    /* classe destiné a l'élément contenant une carte. Son image de backgroud sera le dos de la carte*/
-    .image-cell
-    {
-        background-image: url("../images/sad/background-sad.png");
-    }
+
+
 
     /* Cette classe est destiné aux images contenant les cartes, quand elles sont face cachée
     Dans cet état elles sont invisibles, laissant voir l'image de l'élément les contenant. Cf. la classe image-cell*/

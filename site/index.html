@@ -10,11 +10,14 @@
     <p>
         Veuillez entrer votre prénom : 
         <input type="text" id="first_name" name="first_name" placeholder="entrée votre prenom" autofocus/>
-        <input type="submit" id="sends" name="sends" />
+        <input type="submit" id="sends" name="sends" /><br />
+        <input type="radio" name="version" value="humors" id="humors" checked/> <label for="humors">jeu drôle</label><br />
+        <input type="radio" name="version" value="sad" id="sad" /> <label for="sad">jeu triste</label>
     </p>
 
     <script type="text/javascript">
     var     compte;
+    var     config;
     var     val;
 
     compte  ={
@@ -31,10 +34,24 @@
                 thirdAnswer: "answer"
     };
 
+    config ={
+                version: null,
+                time: 30,           //durée de la partie en secondes.
+                counter: 5,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
+                see: "test"
+    }
+
     document.getElementById('sends').onclick = function(){
+        if(document.getElementById('humors').checked)
+            config.version = document.getElementById('humors').value;
+        else
+            config.version = document.getElementById('sad').value;
         compte.prenom = document.getElementById('first_name').value;
         val = JSON.stringify(compte);
         window.localStorage.setItem(String(compte.id), val);
+        val = JSON.stringify(config);
+        window.localStorage.setItem("0", val);
+        alert(config.version);
         location.href=("memory.html?id=" + compte.id)
     }
     </script>
