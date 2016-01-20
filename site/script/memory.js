@@ -47,6 +47,7 @@ function init()
     id = url.substring(url.indexOf("=")+1);
     compte = JSON.parse(window.localStorage.getItem(id));
     config = JSON.parse(window.localStorage.getItem("0"));
+    initCSS();
     randomPlacementCards();
 
     for (i = 0; i < cards.length; i++)
