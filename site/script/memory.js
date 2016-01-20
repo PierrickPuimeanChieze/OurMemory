@@ -44,12 +44,10 @@ function init()
     start = document.getElementById("start");
     url = location.search;
 
-    alert("test000");
     id = url.substring(url.indexOf("=")+1);
     compte = JSON.parse(window.localStorage.getItem(id));
     config = JSON.parse(window.localStorage.getItem("0"));
     randomPlacementCards();
-    alert("test100");
 
     for (i = 0; i < cards.length; i++)
     {
@@ -182,13 +180,10 @@ function randomPlacementCards()
 
     placedImg = {};
 
-
-    alert("test010");
     for (img=1; img <= nbpair; img++)
     {
         placedImg[img] = 0;
     }
-    alert("test011");
 
     Math.seedrandom(see);
 
@@ -202,7 +197,6 @@ function randomPlacementCards()
             placedCard++;
         }
     }
-    alert("test019");
 }
 
 function getRandomIntInclusive(min, max)
@@ -212,6 +206,5 @@ function getRandomIntInclusive(min, max)
 
 function initCSS()
 {
-    //document.getElementsByClassName("image-cell").background-image = url("../images/" + config.version + "/background.png");
     document.getElementById("version").href = "CSS/memory" + config.version + ".css"
 }

@@ -39,7 +39,7 @@
                 time: 30,           //durée de la partie en secondes.
                 counter: 5,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
                 see: "test"
-    }
+    };
 
     document.getElementById('sends').onclick = function(){
         if(document.getElementById('humors').checked)
@@ -51,7 +51,6 @@
         window.localStorage.setItem(String(compte.id), val);
         val = JSON.stringify(config);
         window.localStorage.setItem("0", val);
-        alert(config.version);
         location.href=("memory.html?id=" + compte.id)
     }
     </script>
