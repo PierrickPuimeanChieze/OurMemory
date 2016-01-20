@@ -18,7 +18,7 @@ var     see;            //graine pour le placement alétoire, devra être dans l
 
 
 cReturn         = 0;
-nbpair          = 3;
+nbpair          = 6;
 pairFind        = 0;
 nbtest          = 0;
 cardReturned    = null;
