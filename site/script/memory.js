@@ -14,6 +14,7 @@ var     counter;        //durée pendant laquelle les carte sont face visible av
 var     time;           //Durée de la partie en secondes. Devra être contenue dans le compte admin au final
 var     intervalId = null;
 var     remainingTime;  //temps restant
+var     see;            //graine pour le placement alétoire, devra être dans la variable admin.
 
 
 cReturn         = 0;
@@ -26,10 +27,12 @@ cards           = document.getElementsByClassName("card");
 counter         = 2;
 time            = 30;
 remainingTime   = time;
+see             = "test1";
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
 function init() 
 {
+    randomPlacementCards();
     var     id;
     //On récupère tous les éléments de type card
     //r     cards = document.getElementsByClassName("card");
@@ -46,6 +49,7 @@ function init()
         //On fait en sorte que la méthode clickCard soit appellée quand on l'utilisateur clique dessus
         cards[i].onclick = clickCard
     }
+
     //P.S. : on aurait pu effectuer cette association dans le code html directement, via l'attribut onclick
     //Exemple : <img class="card back-visible" src="images/sad/Image-1.png" onclick="clickCard(event);"/>
     //C'est toutefois à éviter quand tu fais une application complexe.
@@ -160,4 +164,39 @@ function endGame()
     val = JSON.stringify(compte);
     window.localStorage.setItem(String(compte.id), val);
     location.href=("resultat.html?id=" + compte.id)
+}
+
+/*
+*Fonction pour placer les cartes de manière aléatoires
+ */
+function randomPlacementCards()
+{
+    var placedCard;                 //compteur indiquant le nombre de carte placé.
+    var img;                        //sert à stocké le numero de l'image tiré
+    var placedImg;                   //variable gardant en mémoire les image déjà utiliser.
+
+    placedImg = {};
+
+    for (img=1; img <= nbpair; img++)
+    {
+        placedImg[img] = 0;
+    }
+
+    Math.seedrandom(see);
+
+    for (placedCard = 0; placedCard < nbpair * 2;)
+    {
+        img = getRandomIntInclusive(1, nbpair);
+        if (placedImg[img] < 2)
+        {
+            cards[placedCard].src = "images/sad/Image-" + img + ".png";
+            placedImg[img]++;
+            placedCard++;
+        }
+    }
+}
+
+function getRandomIntInclusive(min, max)
+{
+    return Math.floor(Math.random() * (max - min +1)) + min;
 }
