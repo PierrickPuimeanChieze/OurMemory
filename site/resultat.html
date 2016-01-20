@@ -7,21 +7,38 @@
 </head>
 
 <body>
-    <p>
-        Le jeu est terminé <span id="prenom"></span>. Vous avez trouvé <span id="pairFind"></span> paire(s) en <span id="pairTest"></span> essai(s) et <span id="time"></span> secondes.
-    </p>
+<p>
+    Félicitation <span id="prenom"></span>. Le jeu est terminé.
+</p>
+<table>
+    <tr>
+        <th>Résultats</th>
+    </tr>
+    <tr>
+        <td>Nombres d'essais :</td>
+        <td><span id="pairTest"></span></td>
+    </tr>
+    <tr>
+        <td>Paires trouvées :</td>
+        <td><span id="pairFind"></span></td>
+    </tr>
+    <tr>
+        <td>Temps écoulé :</td>
+        <td><span id="time"></span></td>
+    </tr>
+</table>
 
-    <script type="text/javascript">
-        var     compte;
-        var     temp;
+<script type="text/javascript">
+    var compte;
+    var temp;
 
-        temp = location.search.substring(1);
-        temp = temp.substring(temp.indexOf("=")+1, temp.length);
-        compte = JSON.parse(window.localStorage.getItem(temp));
-        document.getElementById('prenom').innerHTML = compte.prenom;
-        document.getElementById('pairFind').innerHTML = compte.paireClassique;
-        document.getElementById('pairTest').innerHTML = compte.paireClassique + compte.echecClassique;
-        document.getElementById('time').innerHTML = compte.tempsClassique;
-    </script>
+    temp = location.search.substring(1);
+    temp = temp.substring(temp.indexOf("=") + 1, temp.length);
+    compte = JSON.parse(window.localStorage.getItem(temp));
+    document.getElementById('prenom').innerHTML = compte.prenom;
+    document.getElementById('pairFind').innerHTML = compte.paireClassique;
+    document.getElementById('pairTest').innerHTML = compte.paireClassique + compte.echecClassique;
+    document.getElementById('time').innerHTML = compte.tempsClassique;
+</script>
 </body>
 </html>

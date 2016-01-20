@@ -19,7 +19,7 @@ var     config;
 
 
 cReturn         = 0;
-nbpair          = 3;
+nbpair          = 6;
 pairFind        = 0;
 nbtest          = 0;
 cardReturned    = null;
