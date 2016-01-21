@@ -114,6 +114,9 @@ function clickCard(mouseEvent)
         endGame();
 }
 
+/*
+**fonction retournant les carte face cachée.
+ */
 function    returnCard(cardReturned, cardElement)
 {
     cardReturned.className = "card back-visible";
@@ -121,6 +124,9 @@ function    returnCard(cardReturned, cardElement)
     gameStarted = 1;
 }
 
+/*
+**fonction appeller lorsque l'on veut commencer une parti
+ */
 function starGame()
 {
     //var   cards = document.getElementsByClassName("card");
@@ -138,15 +144,21 @@ function starGame()
     //    cards[i].className = "card back-visible";
 }
 
+/*
+**fonction faisant le decompte avant le debut de la partie
+ */
 function bip()
 {
     counter--;
     document.getElementById("timer").innerHTML = "La partie commence dans " + counter + " secondes.";
 }
 
+/*
+**fonction appellé au debut de la partie
+ */
+
 function endTimer()
 {
-    //var     cards = document.getElementsByClassName("card");
     var     i;
 
     for (i = 0; i < cards.length; i++)
@@ -158,13 +170,25 @@ function endTimer()
     setTimeout(endGame, time * 1000);
 }
 
+/*
+**fonction appelé à la fin de la partie. Met à jour les scores et envoie à la page suivantes.
+ */
 function endGame()
 {
     alert("Fin de la partie");
     clearInterval(intervalId);
-    compte.paireClassique = pairFind;
-    compte.echecClassique = nbtest - pairFind;
-    compte.tempsClassique = time - remainingTime;
+    if (config.version = "sad")
+    {
+        compte.paireClassique = pairFind;
+        compte.echecClassique = nbtest - pairFind;
+        compte.tempsClassique = time - remainingTime;
+    }
+    else
+    {
+        compte.paireHumour = pairFind;
+        compte.echecHumour = nbtest - pairFind;
+        compte.tempsHumour = time - remainingTime;
+    }
     val = JSON.stringify(compte);
     window.localStorage.setItem(String(compte.id), val);
     location.href=("resultat.html?id=" + compte.id)
@@ -200,11 +224,17 @@ function randomPlacementCards()
     }
 }
 
+/*
+**fonction random qui renvoie un valeur compris entre min inclue et max inclue
+ */
 function getRandomIntInclusive(min, max)
 {
     return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
+/*
+**change choisi un CSS suivant la version choisi.
+ */
 function initCSS()
 {
     document.getElementById("version").href = "CSS/memory" + config.version + ".css"

@@ -24,21 +24,63 @@
     </tr>
     <tr>
         <td>Temps écoulé :</td>
-        <td><span id="time"></span></td>
+        <td><span id="time"></span> seconde(s)</td>
     </tr>
 </table>
+<div>
+    <p>Voici trois question, veuillez y répondre</p>
+    <ol>
+        <li>1er question<br/><textarea  id="first_answer" name="first_answer" placeholder="première réponse" rows="10" cols="50" autofocus></textarea><br/><br/></li>
+        <li>2ème question<br/><textarea  id="second_answer" name="second_answer" placeholder="deuxième réponse" rows="10" cols="50"></textarea><br/><br/></li>
+        <li>3ème question<br/><textarea  id="third_answer" name="third_answer" placeholder="troisième réponse" rows="10" cols="50"></textarea><br/><br/></li>
+
+    </ol>
+    <input type="submit" id="sends" name="sends" />
+</div>
 
 <script type="text/javascript">
     var compte;
     var temp;
+    var config;
 
     temp = location.search.substring(1);
     temp = temp.substring(temp.indexOf("=") + 1, temp.length);
     compte = JSON.parse(window.localStorage.getItem(temp));
+    config = JSON.parse(window.localStorage.getItem("0"));
     document.getElementById('prenom').innerHTML = compte.prenom;
-    document.getElementById('pairFind').innerHTML = compte.paireClassique;
-    document.getElementById('pairTest').innerHTML = compte.paireClassique + compte.echecClassique;
-    document.getElementById('time').innerHTML = compte.tempsClassique;
+    if (config.version === "sad")
+    {
+        document.getElementById('pairFind').innerHTML = compte.paireClassique;
+        document.getElementById('pairTest').innerHTML = compte.paireClassique + compte.echecClassique;
+        document.getElementById('time').innerHTML = compte.tempsClassique;
+    }
+    else
+    {
+        document.getElementById('pairFind').innerHTML = compte.paireHumour;
+        document.getElementById('pairTest').innerHTML = compte.paireHumour + compte.echecHumour;
+        document.getElementById('time').innerHTML = compte.tempsHumour;
+    }
+    document.getElementById('sends').onclick = function()
+    {
+        if (String(config.version) === "sad")
+        {
+            compte.firstAnswerClassique = document.getElementById("first_answer").value;
+            compte.secondAnswerClassique = document.getElementById("second_answer").value;
+            compte.thirdAnswerClassique = document.getElementById("third_answer").value;
+        }
+        else
+        {
+            compte.firstAnswerHumour = document.getElementById("first_answer").value;
+            compte.secondAnswerHumour = document.getElementById("second_answer").value;
+            compte.thirdAnswerHumour = document.getElementById("third_answer").value;
+        }
+        var val;
+
+        val = JSON.stringify(compte);
+        window.localStorage.setItem(String(compte.id), val);
+
+        compte = JSON.parse(window.localStorage.getItem(temp));
+    }
 </script>
 </body>
 </html>
