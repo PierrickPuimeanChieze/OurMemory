@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="init();">
+<p>
+    Réponse, version du jeu drôle.<br />
+    1er réponse : <span id="firstAnswerHumour"></span><br />
+    2ème réponse : <span id="secondAnswerHumour"></span><br />
+    3ème réponse : <span id="thirdAnswerHumour"></span><br />
+    <br />
+    Réponse, version du jeu triste.<br />
+    1er réponse : <span id="firstAnswerClassique"></span><br />
+    2ème réponse : <span id="secondAnswerClassique"></span><br />
+    3ème réponse : <span id="thirdAnswerClassique"></span><br />
+</p>
+
+<script type="text/javascript">
+    var     compte;
+
+    function init()
+    {
+        var     url;
+
+        url = location.search;
+        compte = JSON.parse(window.localStorage.getItem(url.substring(url.indexOf("=")+1)));
+        document.getElementById('firstAnswerHumour').innerHTML = compte.firstAnswerHumour;
+        document.getElementById('secondAnswerHumour').innerHTML = compte.secondAnswerHumour;
+        document.getElementById('thirdAnswerHumour').innerHTML = compte.thirdAnswerHumour;
+        document.getElementById('firstAnswerClassique').innerHTML = compte.firstAnswerClassique;
+        document.getElementById('secondAnswerClassique').innerHTML = compte.secondAnswerClassique;
+        document.getElementById('thirdAnswerClassique').innerHTML = compte.thirdAnswerClassique;
+    }
+</script>
+
+</body>
+</html>
