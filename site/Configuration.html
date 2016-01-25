@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <td>Nombres de comptes créés</td>
-        <td><a id="nbUser" href="#liste_de_comte.html"></a></td>
+        <td><a id="nbUser" href="liste_de_comte.html"></a></td>
     </tr>
 </table>
 
@@ -45,6 +45,9 @@
 </p>
 
 <script type="text/javascript">
+    /*
+    **  fonction initialisation de la page.
+     */
     function init()
     {
         config = load_data("config");
@@ -52,13 +55,14 @@
             config = create_config();
 
         updatePage();
-        document.getElementById('nbpair').innerHTML = String(config.nbpair);
-        document.getElementById('nbUser').innerHTML = String(config.nbUser);
         document.getElementById('validate').onclick = validate;
         document.getElementById('cancel').onclick = updatePage;
         document.getElementById('Apply').onclick = updateConfig;
     }
 
+    /*
+    **  fonction pour mettre à jour la variable de configuration.
+     */
     function updateConfig()
     {
         var     val;
@@ -71,12 +75,17 @@
         window.localStorage.setItem("config", val);
     }
 
+    /*
+    **  fonction pour mettre à jour l'affichage de la page.
+     */
     function updatePage()
     {
         document.getElementById('gameVersion').value = config.version;
         document.getElementById('timeGame').value = config.time;
         document.getElementById('timeMemo').value = config.counter;
         document.getElementById('see').value = config.see;
+        document.getElementById('nbpair').innerHTML = String(config.nbpair);
+        document.getElementById('nbUser').innerHTML = String(config.nbUser);
     }
 
     function validate()
