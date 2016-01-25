@@ -1,18 +1,23 @@
+<!DOCTYPE html>
 <html>
 <head>
 
     <meta charset="utf-8">
     <title>Mémory : Version d'essai, Accueil</title>
 
+    <script type="application/javascript" src="script/Data_management.js"></script>
 </head>
 
-<body>
+<body onload="init();">
     <p>
-        Veuillez entrer votre prénom : 
+        Pour une première partie veuillez entrer votre prénom :
         <input type="text" id="first_name" name="first_name" placeholder="Entrez votre prénom" autofocus/>
-        <input type="submit" id="sends" name="sends" /><br />
-        <input type="radio" name="version" value="humors" id="humors" checked/> <label for="humors">jeu drôle</label><br />
-        <input type="radio" name="version" value="sad" id="sad" /> <label for="sad">jeu triste</label>
+        <input type="submit" id="sendsName" name="sendsName" value="Créer" /><br />
+        Sinon Entré votre identifiant :
+        <input type="text" id="id" name="id" placeholder="Entrez votre identifiant" />
+        <input type="submit" id="sendsId" name="sendsId" /><br />
+        <br />
+        <input type="submit" id="config" name="config" value="Configuration" /><br />
     </p>
 
     <script type="text/javascript">
@@ -37,25 +42,45 @@
                 thirdAnswerClassique: "thirdAnswerClassique"
     };
 
-    config ={
-                version: null,
-                time: 30,           //durée de la partie en secondes.
-                counter: 5,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
-                see: "test"
+    function init()
+    {
+        config = load_data("config");
+        if (config == null)
+            config = create_config();
+        //window.localStorage.clear();      //ligne pour effacer tout les donner rentrer dans le localStorage
+    }
+
+    /*
+    **  au final il faudra peut être une verification  si l'id est determiner par les info rentré lors
+    **  de la création du compte.
+     */
+    document.getElementById('sendsName').onclick = function(){
+        if (document.getElementById('first_name').value === "")
+            alert("Veulliez rentrer votre prénom.");
+        else
+        {
+            compte.prenom = document.getElementById('first_name').value;
+            compte.id = config.nbUser + 1;
+            config.nbUser = config.nbUser + 1;
+            val = JSON.stringify(compte);
+            window.localStorage.setItem(String(compte.id), val);
+            val = JSON.stringify(config);
+            window.localStorage.setItem("config", val);
+            location.href = ("memory.html?id=" + compte.id);
+        }
     };
 
-    document.getElementById('sends').onclick = function(){
-        if(document.getElementById('humors').checked)
-            config.version = document.getElementById('humors').value;
+    document.getElementById('sendsId').onclick = function() {
+        compte = load_data(document.getElementById('id').value);
+        if (compte != null)
+            location.href = ("memory.html?id=" + compte.id);
         else
-            config.version = document.getElementById('sad').value;
-        compte.prenom = document.getElementById('first_name').value;
-        val = JSON.stringify(compte);
-        window.localStorage.setItem(String(compte.id), val);
-        val = JSON.stringify(config);
-        window.localStorage.setItem("0", val);
-        location.href=("memory.html?id=" + compte.id)
-    }
+            alert("Votre identifiant n'est pas valide ou n'existe pas.\n Veuillez le rentrer correctement ou créer un nouveau compte.");
+    };
+
+    document.getElementById('config').onclick = function() {
+        location.href=("Configuration.html");
+    };
     </script>
 </body>
 </html>

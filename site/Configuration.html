@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Mémory : Version d'essai, configuration</title>
+
+    <script type="application/javascript" src="script/Data_management.js"></script>
+</head>
+<body onload="init();">
+
+<table>
+    <tr>
+        <td><label for="gameVersion">Version du jeu</label></td>
+        <td><select name="gameVersion" id="gameVersion">
+        <option value="humors">jeu drôle</option>
+        <option value="sad">jeu triste</option></select></td>
+    </tr>
+    <tr>
+        <td><label for="timeGame">durée de la partie</label></td>
+        <td><input type="number" id="timeGame" name="timeGame"/></td>
+    </tr>
+    <tr>
+        <td><label for="timeMemo">temps pour mémorisée</label></td>
+        <td><input type="number" id="timeMemo" name="timeMemo"/></td>
+    </tr>
+    <tr>
+        <td><label for="see">Disposition des cartes</label></td>
+        <td><input type="text" id="see" name="see"/></td>
+    </tr>
+    <tr>
+        <td>Nombres de paires de cartes</td>
+        <td><span id="nbpair"></span></td>
+    </tr>
+    <tr>
+        <td>Nombres de comptes créés</td>
+        <td><a id="nbUser" href="#liste_de_comte.html"></a></td>
+    </tr>
+</table>
+
+<p>
+    <input type="submit" id="validate" name="validate" value="Valider"/>
+    <input type="submit" id="cancel" name="cancel" value="Annuler"/>
+    <input type="submit" id="Apply" name="Apply" value="Appliquer"/>
+
+</p>
+
+<script type="text/javascript">
+    function init()
+    {
+        config = load_data("config");
+        if (config == null)
+            config = create_config();
+
+        updatePage();
+        document.getElementById('nbpair').innerHTML = String(config.nbpair);
+        document.getElementById('nbUser').innerHTML = String(config.nbUser);
+        document.getElementById('validate').onclick = validate;
+        document.getElementById('cancel').onclick = updatePage;
+        document.getElementById('Apply').onclick = updateConfig;
+    }
+
+    function updateConfig()
+    {
+        var     val;
+
+        config.version = document.getElementById('gameVersion').value;
+        config.time = document.getElementById('timeGame').value;
+        config.counter = document.getElementById('timeMemo').value;
+        config.see = document.getElementById('see').value;
+        val = JSON.stringify(config);
+        window.localStorage.setItem("config", val);
+    }
+
+    function updatePage()
+    {
+        document.getElementById('gameVersion').value = config.version;
+        document.getElementById('timeGame').value = config.time;
+        document.getElementById('timeMemo').value = config.counter;
+        document.getElementById('see').value = config.see;
+    }
+
+    function validate()
+    {
+        updateConfig();
+        location.href=("index.html");
+    }
+</script>
+</body>
+</html>

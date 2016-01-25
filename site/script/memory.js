@@ -46,7 +46,7 @@ function init()
 
     id = url.substring(url.indexOf("=")+1);
     compte = JSON.parse(window.localStorage.getItem(id));
-    config = JSON.parse(window.localStorage.getItem("0"));
+    config = JSON.parse(window.localStorage.getItem("config"));
     initCSS();
     randomPlacementCards();
 
@@ -129,7 +129,6 @@ function    returnCard(cardReturned, cardElement)
  */
 function starGame()
 {
-    //var   cards = document.getElementsByClassName("card");
     var     i;
 
     for (i = 0; i < cards.length; i++)
@@ -138,10 +137,6 @@ function starGame()
     document.getElementById("timer").innerHTML = "La partie commence dans " + counter + " secondes.";
     intervalId = setInterval(bip, 1000);
     setTimeout(endTimer, counter * 1000);
-    //gameStarted = 1;
-
-    //for (i = 0; i < cards.length; i++)
-    //    cards[i].className = "card back-visible";
 }
 
 /*
