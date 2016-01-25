@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Mémory : Version d'essai, Réponse</title>
 </head>
 <body onload="init();">
 <p>
@@ -16,6 +16,8 @@
     2ème réponse : <span id="secondAnswerClassique"></span><br />
     3ème réponse : <span id="thirdAnswerClassique"></span><br />
 </p>
+
+<input type="submit" name="return" id="return" value="Retour" />
 
 <script type="text/javascript">
     var     compte;
@@ -32,6 +34,10 @@
         document.getElementById('firstAnswerClassique').innerHTML = compte.firstAnswerClassique;
         document.getElementById('secondAnswerClassique').innerHTML = compte.secondAnswerClassique;
         document.getElementById('thirdAnswerClassique').innerHTML = compte.thirdAnswerClassique;
+    }
+
+    document.getElementById('return').onclick = function() {
+        location.href = ("liste_des_comptes.html");
     }
 </script>
 

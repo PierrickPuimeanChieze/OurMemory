@@ -1,34 +1,22 @@
 
 
 var     cReturn;        //Variable pour connaitre le nombre de carte retourné
-var     nbpair;         //Variable indiquand le nombre de paires de carte du jeu.Devrat peut être contenue
-                        // dans les parametre.
 var     pairFind;       //Variable indiquand le nombre de paire trouvé
 var     cardReturned;   //Variable memorisant la carte precedente retourné
 var     compte;         //variable contenant toute les information du joueur
 var     nbtest;         //nombre de coup joué.
 var     gameStarted;    //indique si la partie est commencé ou pas.
-var     cards;          //contient les balise des cartes.
-var     counter;        //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
-                        //Devra être contenue dans le compte admin au final
-var     time;           //Durée de la partie en secondes. Devra être contenue dans le compte admin au final
 var     intervalId = null;
 var     remainingTime;  //temps restant
-var     see;            //graine pour le placement alétoire, devra être dans la variable admin.
 var     config;
 
 
 cReturn         = 0;
-nbpair          = 6;
 pairFind        = 0;
 nbtest          = 0;
 cardReturned    = null;
 gameStarted     = 0;
 cards           = document.getElementsByClassName("card");
-counter         = 2;
-time            = 30;
-remainingTime   = time;
-see             = "test1";
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
 function init() 
@@ -47,6 +35,7 @@ function init()
     id = url.substring(url.indexOf("=")+1);
     compte = JSON.parse(window.localStorage.getItem(id));
     config = JSON.parse(window.localStorage.getItem("config"));
+    remainingTime   = config.time;
     initCSS();
     randomPlacementCards();
 
@@ -110,7 +99,7 @@ function clickCard(mouseEvent)
         cardReturned = null;
         cReturn = 0;
     }
-    if (nbpair === pairFind)
+    if (config.nbpair === pairFind)
         endGame();
 }
 
@@ -134,9 +123,9 @@ function starGame()
     for (i = 0; i < cards.length; i++)
         cards[i].className = "card front-visible";
     document.getElementById("start").style.display = 'none';
-    document.getElementById("timer").innerHTML = "La partie commence dans " + counter + " secondes.";
+    document.getElementById("timer").innerHTML = "La partie commence dans " + config.counter + " secondes.";
     intervalId = setInterval(bip, 1000);
-    setTimeout(endTimer, counter * 1000);
+    setTimeout(endTimer, config.counter * 1000);
 }
 
 /*
@@ -145,7 +134,7 @@ function starGame()
 function bip()
 {
     counter--;
-    document.getElementById("timer").innerHTML = "La partie commence dans " + counter + " secondes.";
+    document.getElementById("timer").innerHTML = "La partie commence dans " + config.counter + " secondes.";
 }
 
 /*
@@ -172,17 +161,17 @@ function endGame()
 {
     alert("Fin de la partie");
     clearInterval(intervalId);
-    if (config.version = "sad")
+    if (config.version === "sad")
     {
         compte.paireClassique = pairFind;
         compte.echecClassique = nbtest - pairFind;
-        compte.tempsClassique = time - remainingTime;
+        compte.tempsClassique = config.time - remainingTime;
     }
     else
     {
         compte.paireHumour = pairFind;
         compte.echecHumour = nbtest - pairFind;
-        compte.tempsHumour = time - remainingTime;
+        compte.tempsHumour = config.time - remainingTime;
     }
     val = JSON.stringify(compte);
     window.localStorage.setItem(String(compte.id), val);
@@ -200,16 +189,16 @@ function randomPlacementCards()
 
     placedImg = {};
 
-    for (img=1; img <= nbpair; img++)
+    for (img=1; img <= config.nbpair; img++)
     {
         placedImg[img] = 0;
     }
 
-    Math.seedrandom(see);
+    Math.seedrandom(config.see);
 
-    for (placedCard = 0; placedCard < nbpair * 2;)
+    for (placedCard = 0; placedCard < config.nbpair * 2;)
     {
-        img = getRandomIntInclusive(1, nbpair);
+        img = getRandomIntInclusive(1, config.nbpair);
         if (placedImg[img] < 2)
         {
             cards[placedCard].src = "images/" + config.version + "/Image-" + img + ".png";

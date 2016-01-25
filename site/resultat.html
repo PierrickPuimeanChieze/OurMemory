@@ -36,7 +36,7 @@
         <li>3ème question<br/><textarea  id="third_answer" name="third_answer" placeholder="troisième réponse" rows="10" cols="50"></textarea><br/><br/></li>
 
     </ol>
-    <input type="submit" id="sends" name="sends" />
+    <input type="submit" id="sends" name="sends" value="Terminer"/>
 </div>
 
 <script type="text/javascript">
@@ -47,7 +47,7 @@
     temp = location.search.substring(1);
     temp = temp.substring(temp.indexOf("=") + 1, temp.length);
     compte = JSON.parse(window.localStorage.getItem(temp));
-    config = JSON.parse(window.localStorage.getItem("0"));
+    config = JSON.parse(window.localStorage.getItem("config"));
     document.getElementById('prenom').innerHTML = compte.prenom;
     if (config.version === "sad")
     {
@@ -81,6 +81,7 @@
         window.localStorage.setItem(String(compte.id), val);
 
         compte = JSON.parse(window.localStorage.getItem(temp));
+        location.href=("index.html");
     }
 </script>
 </body>
