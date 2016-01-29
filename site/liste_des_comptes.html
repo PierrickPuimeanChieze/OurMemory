@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mémory : Version d'essai, liste des comptes</title>
+
+    <script type="application/javascript" src="script/Data_management.js"></script>
+    <style>
+        table
+        {
+            border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+        }
+
+        td,th /* Toutes les cellules des tableaux... */
+        {
+            border: 1px solid black; /* auront une bordure de 1px */
+        }
+    </style>
+</head>
+<body onload="init();">
+
+<table id="tableAccount">
+    <tr>
+        <th>Prénom</th>
+        <th>Identifiant</th>
+        <th colspan="3">Version humour</th>
+        <th colspan="3">Version triste</th>
+        <th>lien des réponse</th>
+    </tr>
+    <tr>
+        <th colspan="2"></th>
+        <th>Temps</th>
+        <th>Paire(s) trouvée</th>
+        <th>Tentative échouée</th>
+        <th>Temps</th>
+        <th>Paire(s) trouvée</th>
+        <th>Tentative échouée</th>
+        <th></th>
+    </tr>
+</table>
+
+<input type="submit" name="return" id="return" value="Retour" />
+
+<script type="text/javascript">
+    var config;
+
+    config = load_data("config");
+    function init()
+    {
+        var compte;
+        var i;
+        var newRow;
+        var newCell;
+/*
+**  rajoute une ligne au tableau par compte avec toute les info du compte.
+ */
+        for (i = 1; i <= config.nbUser; i++)
+        {
+            compte = load_data(i);
+            newRow = document.getElementById('tableAccount').insertRow(-1);
+            newCell = newRow.insertCell(0);
+            newCell.innerHTML = compte.prenom;
+            newCell = newRow.insertCell(1);
+            newCell.innerHTML = compte.id;
+            newCell = newRow.insertCell(2);
+            newCell.innerHTML = compte.tempsHumour;
+            newCell = newRow.insertCell(3);
+            newCell.innerHTML = compte.paireHumour;
+            newCell = newRow.insertCell(4);
+            newCell.innerHTML = compte.echecHumour;
+            newCell = newRow.insertCell(5);
+            newCell.innerHTML = compte.tempsClassique;
+            newCell = newRow.insertCell(6);
+            newCell.innerHTML = compte.paireClassique;
+            newCell = newRow.insertCell(7);
+            newCell.innerHTML = compte.echecClassique;
+            newCell = newRow.insertCell(8);
+            newCell.innerHTML = '<a href="Réponse.html?id=' + compte.id + '">réponse</a>';
+        }
+    }
+
+    document.getElementById('return').onclick = function() {
+        location.href = ("Configuration.html");
+    }
+</script>
+</body>
+</html>
