@@ -9,7 +9,7 @@ var     gameStarted;    //indique si la partie est commencé ou pas.
 var     intervalId = null;
 var     remainingTime;  //temps restant
 var     config;
-
+var     imageNumber;    //Le nombre d'images disponibles dans le repertoire image. Chaque image doit être nommée "Image-<indexNbr>.png
 
 cReturn         = 0;
 pairFind        = 0;
@@ -17,9 +17,11 @@ nbtest          = 0;
 cardReturned    = null;
 gameStarted     = 0;
 cards           = document.getElementsByClassName("card");
+imageNumber     = 6;
+
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
-function init() 
+function init()
 {
     var     id;
     //On récupère tous les éléments de type card
@@ -179,32 +181,44 @@ function endGame()
 }
 
 /*
-*Fonction pour placer les cartes de manière aléatoires
+ *Fonction pour placer les cartes de manière aléatoires
+ * Nouvelle version : Elle prend les element de carte deux par deux,leur assigne une image, puis passe à la paire
+ * d'élément suivantes
+ * Ceci afin de pouvoir avoir un nombre d'element carte indépendant du nombre d'image.
  */
 function randomPlacementCards()
 {
-    var placedCard;                 //compteur indiquant le nombre de carte placé.
-    var img;                        //sert à stocké le numero de l'image tiré
-    var placedImg;                   //variable gardant en mémoire les image déjà utiliser.
+    //Ici on créé un tableau modifiable d'element a modifier, ceci afin de pouvoir retirer un element carte quand il a été associé a une image
+    var remainingCardElements =Array.prototype.slice.call( cards );
+    var imageIndex = 1;
 
-    placedImg = {};
-
-    for (img=1; img <= config.nbpair; img++)
-    {
-        placedImg[img] = 0;
+    //Si le nombre de cartes à placer est impair
+    if (remainingCardElements.length % 2 >0) {
+        //On affiche une erreur
+        window.alert("WARNING ! Nombre de cartes impaire sur le tableau");
+        //et on arrète la methode
+        return;
     }
-
     Math.seedrandom(config.see);
 
-    for (placedCard = 0; placedCard < config.nbpair * 2;)
-    {
-        img = getRandomIntInclusive(1, config.nbpair);
-        if (placedImg[img] < 2)
-        {
-            cards[placedCard].src = "images/" + config.version + "/Image-" + img + ".png";
-            placedImg[img]++;
-            placedCard++;
+    //Pour chacun des element carte restant encore a remplir
+    while (remainingCardElements.length>0) {
+        //Par deux fois
+        for (var i =0; i<2 ;i++) {
+            //On en récupère un au hasard
+            var elementIndex = Math.floor(Math.random()*remainingCardElements.length);
+            //On change sa source pour l'image actuellement pointée par imageIndex
+            remainingCardElements[elementIndex].src = "images/" + config.version + "/Image-" + imageIndex + ".png";
+            //Et one le retire de la liste
+            remainingCardElements.splice(elementIndex, 1);
         }
+        //Puis on incrémente l'index de l'image (on ou boucle si il a atteint la limite
+        if (imageIndex == imageNumber) {
+            imageIndex = 1;
+        } else {
+            imageIndex++;
+        }
+
     }
 }
 
