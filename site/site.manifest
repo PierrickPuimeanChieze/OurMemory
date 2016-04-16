@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# v0.0.2
+# v0.0.3
 
 CACHE:
 index.html
@@ -32,6 +32,6 @@ images/sad/Image-4.png
 images/sad/Image-5.png
 images/sad/Image-6.png
 
-css/memory.css
-css/memoryhumors.css
-css/memorysad.css
+CSS/memory.css
+CSS/memoryhumors.css
+CSS/memorysad.css
