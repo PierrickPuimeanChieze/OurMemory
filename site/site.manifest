@@ -1,0 +1,37 @@
+CACHE MANIFEST
+
+# v0.0.4
+
+CACHE:
+index.html
+memory.html
+resultat.html
+
+script/memory.js
+http://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js
+
+images/humors/background.png
+images/humors/ballon_foot.gif
+images/humors/bottes.jpg
+images/humors/ecureuil.png
+images/humors/fleur.png
+images/humors/Image-1.png
+images/humors/Image-2.png
+images/humors/Image-3.png
+images/humors/Image-4.png
+images/humors/Image-5.png
+images/humors/Image-6.png
+images/humors/pomme.png
+images/humors/taxi.jpg
+
+images/sad/background.png
+images/sad/Image-1.png
+images/sad/Image-2.png
+images/sad/Image-3.png
+images/sad/Image-4.png
+images/sad/Image-5.png
+images/sad/Image-6.png
+
+CSS/memory.css
+CSS/memoryhumors.css
+CSS/memorysad.css
