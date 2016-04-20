@@ -4,6 +4,8 @@
 
     <meta charset="UTF-8">
     <title>Mémory : Version d'essai, Nouveau joueur</title>
+
+    <script type="application/javascript" src="script/Data_management.js"></script>
     <style>
         td
         {
@@ -58,16 +60,54 @@
 </div>
 
 <script type="text/javascript">
+    var     config;
+    var     val;
+    var     game;
+    var     now;
+
+    now = new Date();
+
+    game = {
+        "firstname" : "firstname", //Prénom
+        "name" : "name", //Nom
+        "birthdate" : "2015-16-02", //Date de naissance au format ISO : YYYY-MM-DD
+        "age" : 32, //age. Pas de controle par rapport à la date de naissance
+        "classe" : "CM2",
+        "sex" : "M | F", //le sexe du joueur
+        "version" : "standard | humor", // la version joué
+        "date" : "26/12/2015", //Date de la partie  au format ISO : YYYY-MM-DD
+        "preGameVisibilityDuration" : 45, // le nombre de secondes pendant lesquelles les cartes ont été visibles
+        "gameLimit" : 45, //Durée de comptabilisation intermédiaires
+        "triesBeforeGameLimit" : 999, //Nombres de couprs joués avant la limitre de comptabilisation
+        "pairsfoundBeforGameLimit" : 999, //Nombre de paires trouvées avant la limite de comptabilisation
+        "totalTries" : 0, // Nombre d'essai total
+        "totalDuration" : 0, //Durée total de la partie en secondes
+        "id" : "" //identifiant générés par le serveur
+    };
     /*
      **  fonction initialisation de la page.
      */
     function init()
     {
+        config = load_data("config");
         document.getElementById('validate').onclick = validate;
     }
 
     function validate()
     {
+        game.firstname = document.getElementById('firstName').value;
+        game.name = document.getElementById('name').value;
+        game.birthdate = document.getElementById('birthDate').value;
+        game.age = document.getElementById('age').value;
+        game.classe = document.getElementById('class').value;
+        game.sex = document.getElementsByName('gender').value;
+        game.version = document.getElementsByName('version').value;
+        game.date = now.getFullYear() + "-" + ('0'+(now.getMonth()+1)).slice(-2) + "-" + ('0'+now.getDate()).slice(-2);
+        game.preGameVisibilityDuration = config.counter;
+        game.gameLimit = config.time;
+        val = JSON.stringify(game);
+        window.localStorage.setItem("game", val);
+        config.nbgame = config.nbgame + 1;              /*pas sur du besoin*/
         location.href=("Rules.html");
     }
 </script>

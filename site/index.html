@@ -9,7 +9,7 @@
     <script type="application/javascript" src="script/Data_management.js"></script>
 </head>
 
-<body>
+<body onload="init();">
 
     <div id="index">
         <input type="submit" class="indexbutton" id="config" name="config" value="Réglages" />
@@ -18,6 +18,19 @@
     </div>
 
 <script type="text/javascript">
+    var     config;
+    var     val;
+
+    function init()
+    {
+        config = load_data("config");
+        if (config == null)
+            config = create_config();
+        //window.localStorage.clear();      //ligne pour effacer tout les donner rentrer dans le localStorage
+        val = JSON.stringify(config);
+        window.localStorage.setItem("config", val);     /*Pour le cas ou on ne passe pas par la page reglage*/
+    }
+
     document.getElementById('config').onclick = function() {
         location.href=("Configuration.html");
     };

@@ -23,12 +23,12 @@ function create_config()
     var     config;
 
     config ={
-        version: "humors",
-        time: 30,           //durée de la partie en secondes.
-        counter: 5,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
-        see: "test",        //code de disposition aléatoire
-        nbpair: 6,          //Nombre de paire du jeu.
-        nbUser: 0           //Nombre de compte créé.
+        //version: "humors",
+        time: 45,           //durée du chrono en secondes.
+        counter: 45,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
+        //see: "test",        //code de disposition aléatoire
+        //nbpair: 6,          //Nombre de paire du jeu.
+        nbgame: 0           //Nombre de partie créé.
     };
 
     return config;
