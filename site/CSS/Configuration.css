@@ -1,0 +1,14 @@
+#compteur
+{
+    display: flex;
+    align-items: center;
+    height: 150px;             /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
+    /*background-color: blue;*/   /*pour tester*/
+    /*padding : 5px*/
+}
+
+#Button
+{
+    display: flex;
+    justify-content:center;
+}

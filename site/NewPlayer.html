@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Mémory : Version d'essai, Nouveau joueur</title>
+    <style>
+        td
+        {
+            padding-bottom: 10px;   /*Pour augmenter l'espace entre les lignes*/
+        }
+        #Button
+        {
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body onload="init();">
+
+<table>
+    <tr>
+        <td><label for="firstName">Prénom</label></td>
+        <td><input type="text" id="firstName" name="firstName" placeholder="Prénom"/></td>
+    </tr>
+    <tr>
+        <td><label for="name">Nom</label></td>
+        <td><input type="text" id="name" name="name" placeholder="Nom"/></td>
+    </tr>
+    <tr>
+        <td><label for="age">Age</label></td>
+        <td><input type="number" id="age" name="age" placeholder="Age"/></td>
+    </tr>
+    <tr>
+        <td><label for="birthDate">Date de naissance</label></td>
+        <td><input type="date" id="birthDate" name="birthDate" placeholder="01/01/2016"/></td>  <!-- Le type date n'est pas supporté par IE, IE mobile, opera mini, safari et firefox.
+        Il agit dans ce cas comme un type="text"(pas fait de test pousser. De même il n'est que partiellement supporté pas IOS saffari, à voir ce que cela donne-->
+    </tr>
+    <tr>
+        <td><label for="class">Classe</label></td>
+        <td><input type="text" id="class" name="class" placeholder="Classe"/></td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="gender" value="girl" id="girl" /> <label for="girl">Fille</label></td>
+        <td><input type="radio" name="gender" value="boy" id="boy" /> <label for="boy">Garçon</label></td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="version" value="standard" id="standard" /> <label for="standard">Standard</label></td>
+        <td><input type="radio" name="version" value="humor" id="humor" /> <label for="humor">Humour</label></td>
+    </tr>
+</table>
+
+<div id="Button">
+    <input type="submit" id="validate" name="validate" value="OK"/>
+</div>
+
+<script type="text/javascript">
+    /*
+     **  fonction initialisation de la page.
+     */
+    function init()
+    {
+        document.getElementById('validate').onclick = validate;
+    }
+
+    function validate()
+    {
+        location.href=("Rules.html");
+    }
+</script>
+
+</body>
+</html>

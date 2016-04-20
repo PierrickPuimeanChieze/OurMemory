@@ -1,0 +1,20 @@
+#index
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;             /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
+    /*background-color: blue;*/    /*pour tester*/
+    padding : 5px
+}
+
+.indexbutton
+{
+    width: 150px;
+}
+
+.indexbutton:nth-child(1)
+{
+    align-self: flex-end;
+}
