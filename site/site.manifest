@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# v0.1.1
+# v0.1.2
 
 CACHE:
 Configuration.html
@@ -13,7 +13,15 @@ Réponse.html
 resultat.html
 Rules.html
 
+script/configuration.js
+script/Data_management.js
+script/existing_player.js
+script/index.js
+script/liste_des_compte.js
 script/memory.js
+script/new_player.js
+script/resultat.js
+script/rules.js
 http://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js
 
 images/humors/background.png
@@ -50,8 +58,16 @@ images/sad/Image-13.png
 images/sad/Image-14.png
 images/sad/Image-15.png
 
+images/wallpaper/fondecran.jpg
+images/wallpaper/fondecranG.jpg
+
+
 CSS/Configuration.css
+CSS/existing_player.css
 CSS/Index.css
+CSS/liste_des_compte.css
 CSS/memory.css
 CSS/memoryhumors.css
 CSS/memorysad.css
+CSS/new_player.css
+CSS/rules.css
