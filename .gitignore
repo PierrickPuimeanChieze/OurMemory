@@ -1,3 +1,4 @@
 *.iml
 /.idea
+./images/*/old
 Thumbs.db

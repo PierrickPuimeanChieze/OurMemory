@@ -3,13 +3,16 @@
 var     cReturn;        //Variable pour connaitre le nombre de carte retourné
 var     pairFind;       //Variable indiquand le nombre de paire trouvé
 var     cardReturned;   //Variable memorisant la carte precedente retourné
-var     compte;         //variable contenant toute les information du joueur
+var     game;         //variable contenant toute les information du joueur
 var     nbtest;         //nombre de coup joué.
 var     gameStarted;    //indique si la partie est commencé ou pas.
 var     intervalId = null;
 var     remainingTime;  //temps restant
 var     config;
 var     imageNumber;    //Le nombre d'images disponibles dans le repertoire image. Chaque image doit être nommée "Image-<indexNbr>.png
+var     counter;
+var     timegame;
+var     arrayGame;
 
 cReturn         = 0;
 pairFind        = 0;
@@ -17,25 +20,26 @@ nbtest          = 0;
 cardReturned    = null;
 gameStarted     = 0;
 cards           = document.getElementsByClassName("card");
-imageNumber     = 6;
+imageNumber     = 15;
+timegame        = 0;
 
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
 function init()
 {
-    var     id;
+    //var     id;
     //On récupère tous les éléments de type card
     //r     cards = document.getElementsByClassName("card");
     //Et pour chacun d'entre eux
     var     i;
-    var     start;
-    var     url;
+    //var     start;
+    //var     url;
 
-    start = document.getElementById("start");
-    url = location.search;
-
-    id = url.substring(url.indexOf("=")+1);
-    compte = JSON.parse(window.localStorage.getItem(id));
+    //start = document.getElementById("start");
+    //url = location.search;
+    //id = url.substring(url.indexOf("=")+1);
+    arrayGame = load_data("arrayGame");
+    game = arrayGame[arrayGame.length - 1];
     config = JSON.parse(window.localStorage.getItem("config"));
     remainingTime   = config.time;
     initCSS();
@@ -54,8 +58,10 @@ function init()
     // Ce qui pose pas mal de probleme pour maintenir ton application
     //Par exemple, dans notre cas, c'est beaucoup plus facile de renommer la méthode clickCard()
 
-    start.onclick = starGame;
-    document.getElementById('prenom').innerHTML = compte.prenom;
+    //start.onclick = starGame;
+    document.getElementById('prenom').innerHTML = game.firstname;
+    starGame();
+    endGame();
 }
 
 //Cette méthode doit être appelée quand l'utilisateur clique sur une carte
@@ -82,6 +88,8 @@ function clickCard(mouseEvent)
             cardReturned.className = "pair-find";
             cardElement.className = "pair-find";
             pairFind++;
+            if (timegame <= game.gameLimit)
+                game.pairsfoundBeforGameLimit = pairFind;
             //alert("paire trouvé " + remainingTime + "s.");
         }
         else
@@ -98,10 +106,12 @@ function clickCard(mouseEvent)
             //alert("raté" + remainingTime + "s.");
         }
         nbtest++;
+        if (timegame <= game.gameLimit)
+            game.triesBeforeGameLimit = nbtest;
         cardReturned = null;
         cReturn = 0;
     }
-    if (config.nbpair === pairFind)
+    if (imageNumber === pairFind)
         endGame();
 }
 
@@ -126,6 +136,7 @@ function starGame()
         cards[i].className = "card front-visible";
     document.getElementById("start").style.display = 'none';
     document.getElementById("timer").innerHTML = "La partie commence dans " + config.counter + " secondes.";
+    counter = config.counter;
     intervalId = setInterval(bip, 1000);
     setTimeout(endTimer, config.counter * 1000);
 }
@@ -136,7 +147,7 @@ function starGame()
 function bip()
 {
     counter--;
-    document.getElementById("timer").innerHTML = "La partie commence dans " + config.counter + " secondes.";
+    document.getElementById("timer").innerHTML = "La partie commence dans " + counter + " secondes.";
 }
 
 /*
@@ -152,8 +163,8 @@ function endTimer()
     clearInterval(intervalId);
     gameStarted = 1;
     document.getElementById("timer").innerHTML = "La partie est en cours.";
-    intervalId = setInterval(function() {remainingTime--;}, 1000);
-    setTimeout(endGame, time * 1000);
+    intervalId = setInterval(function() {timegame++;}, 1000);
+    //setTimeout(endGame, time * 1000);
 }
 
 /*
@@ -163,7 +174,7 @@ function endGame()
 {
     alert("Fin de la partie");
     clearInterval(intervalId);
-    if (config.version === "sad")
+    /*if (config.version === "sad")
     {
         compte.paireClassique = pairFind;
         compte.echecClassique = nbtest - pairFind;
@@ -174,10 +185,13 @@ function endGame()
         compte.paireHumour = pairFind;
         compte.echecHumour = nbtest - pairFind;
         compte.tempsHumour = config.time - remainingTime;
-    }
-    val = JSON.stringify(compte);
-    window.localStorage.setItem(String(compte.id), val);
-    location.href=("resultat.html?id=" + compte.id)
+    }*/
+    game.totalTries = nbtest;
+    game.totalDuration = timegame;
+    arrayGame[arrayGame.length - 1] = game;
+    val = JSON.stringify(arrayGame);
+    window.localStorage.setItem("arrayGame", val);
+    location.href=("resultat.html");
 }
 
 /*
@@ -189,7 +203,7 @@ function endGame()
 function randomPlacementCards()
 {
     //Ici on créé un tableau modifiable d'element a modifier, ceci afin de pouvoir retirer un element carte quand il a été associé a une image
-    var remainingCardElements =Array.prototype.slice.call( cards );
+    var remainingCardElements = Array.prototype.slice.call( cards );
     var imageIndex = 1;
 
     //Si le nombre de cartes à placer est impair
@@ -199,7 +213,7 @@ function randomPlacementCards()
         //et on arrète la methode
         return;
     }
-    Math.seedrandom(config.see);
+    Math.seedrandom("TEST");
 
     //Pour chacun des element carte restant encore a remplir
     while (remainingCardElements.length>0) {
@@ -208,7 +222,7 @@ function randomPlacementCards()
             //On en récupère un au hasard
             var elementIndex = Math.floor(Math.random()*remainingCardElements.length);
             //On change sa source pour l'image actuellement pointée par imageIndex
-            remainingCardElements[elementIndex].src = "images/" + config.version + "/Image-" + imageIndex + ".png";
+            remainingCardElements[elementIndex].src = "images/" + game.version + "/Image-" + imageIndex + ".jpg";
             //Et one le retire de la liste
             remainingCardElements.splice(elementIndex, 1);
         }
@@ -225,15 +239,15 @@ function randomPlacementCards()
 /*
 **fonction random qui renvoie un valeur compris entre min inclue et max inclue
  */
-function getRandomIntInclusive(min, max)
+/*function getRandomIntInclusive(min, max)
 {
     return Math.floor(Math.random() * (max - min +1)) + min;
-}
+}*/
 
 /*
 **change choisi un CSS suivant la version choisi.
  */
 function initCSS()
 {
-    document.getElementById("version").href = "CSS/memory" + config.version + ".css"
+    document.getElementById("version").href = "CSS/memory" + game.version + ".css"
 }

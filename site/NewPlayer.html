@@ -38,7 +38,7 @@
     </tr>
     <tr>
         <td><label for="birthDate">Date de naissance</label></td>
-        <td><input type="date" id="birthDate" name="birthDate" placeholder="01/01/2016"/></td>  <!-- Le type date n'est pas supporté par IE, IE mobile, opera mini, safari et firefox.
+        <td><input type="date" id="birthDate" name="birthDate" placeholder="2016-01-30"/></td>  <!-- Le type date n'est pas supporté par IE, IE mobile, opera mini, safari et firefox.
         Il agit dans ce cas comme un type="text"(pas fait de test pousser. De même il n'est que partiellement supporté pas IOS saffari, à voir ce que cela donne-->
     </tr>
     <tr>
@@ -50,8 +50,8 @@
         <td><input type="radio" name="gender" value="boy" id="boy" /> <label for="boy">Garçon</label></td>
     </tr>
     <tr>
-        <td><input type="radio" name="version" value="standard" id="standard" /> <label for="standard">Standard</label></td>
-        <td><input type="radio" name="version" value="humor" id="humor" /> <label for="humor">Humour</label></td>
+        <td><input type="radio" name="version" value="sad" id="standard" /> <label for="standard">Standard</label></td>
+        <td><input type="radio" name="version" value="humors" id="humor" /> <label for="humor">Humour</label></td>
     </tr>
 </table>
 
@@ -64,50 +64,59 @@
     var     val;
     var     game;
     var     now;
+    var     arrayGame = new Array;
 
     now = new Date();
 
-    game = {
-        "firstname" : "firstname", //Prénom
-        "name" : "name", //Nom
-        "birthdate" : "2015-16-02", //Date de naissance au format ISO : YYYY-MM-DD
-        "age" : 32, //age. Pas de controle par rapport à la date de naissance
-        "classe" : "CM2",
-        "sex" : "M | F", //le sexe du joueur
-        "version" : "standard | humor", // la version joué
-        "date" : "26/12/2015", //Date de la partie  au format ISO : YYYY-MM-DD
-        "preGameVisibilityDuration" : 45, // le nombre de secondes pendant lesquelles les cartes ont été visibles
-        "gameLimit" : 45, //Durée de comptabilisation intermédiaires
-        "triesBeforeGameLimit" : 999, //Nombres de couprs joués avant la limitre de comptabilisation
-        "pairsfoundBeforGameLimit" : 999, //Nombre de paires trouvées avant la limite de comptabilisation
-        "totalTries" : 0, // Nombre d'essai total
-        "totalDuration" : 0, //Durée total de la partie en secondes
-        "id" : "" //identifiant générés par le serveur
-    };
+    game = newGame();
     /*
      **  fonction initialisation de la page.
      */
+
     function init()
     {
         config = load_data("config");
+
+        if(load_data("arrayGame") !== null)
+            arrayGame = load_data("arrayGame");
         document.getElementById('validate').onclick = validate;
     }
 
     function validate()
     {
+        var i;
+        var tab;
+
         game.firstname = document.getElementById('firstName').value;
         game.name = document.getElementById('name').value;
         game.birthdate = document.getElementById('birthDate').value;
         game.age = document.getElementById('age').value;
         game.classe = document.getElementById('class').value;
-        game.sex = document.getElementsByName('gender').value;
-        game.version = document.getElementsByName('version').value;
+        tab = document.getElementsByName('gender');
+        for (i=0;i<tab.length;i++)
+        {
+            if(tab[i].checked)
+            {
+                game.sex = tab[i].value;
+                break;
+            }
+        }
+        tab = document.getElementsByName('version');
+        for (i=0;i<tab.length;i++)
+        {
+            if(tab[i].checked)
+            {
+                game.version = tab[i].value;
+                break;
+            }
+        }
         game.date = now.getFullYear() + "-" + ('0'+(now.getMonth()+1)).slice(-2) + "-" + ('0'+now.getDate()).slice(-2);
         game.preGameVisibilityDuration = config.counter;
         game.gameLimit = config.time;
-        val = JSON.stringify(game);
-        window.localStorage.setItem("game", val);
-        config.nbgame = config.nbgame + 1;              /*pas sur du besoin*/
+        val = arrayGame.length;
+        arrayGame[val] = game;
+        val = JSON.stringify(arrayGame);
+        window.localStorage.setItem("arrayGame", val);
         location.href=("Rules.html");
     }
 </script>

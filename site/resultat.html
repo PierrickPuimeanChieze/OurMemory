@@ -11,7 +11,7 @@
 <p>
     Félicitations <span id="prenom"></span>. Le jeu est terminé.
 </p>
-<table>
+<!--<table>
     <tr>
         <th>Résultats</th>
     </tr>
@@ -27,28 +27,44 @@
         <td>Temps écoulé :</td>
         <td><span id="time"></span> seconde(s)</td>
     </tr>
-</table>
+</table>-->
 <div>
     <p>Voici trois question, veuillez y répondre</p>
     <ol>
-        <li>1er question<br/><textarea  id="first_answer" name="first_answer" placeholder="première réponse" rows="10" cols="50" autofocus></textarea><br/><br/></li>
-        <li>2ème question<br/><textarea  id="second_answer" name="second_answer" placeholder="deuxième réponse" rows="10" cols="50"></textarea><br/><br/></li>
-        <li>3ème question<br/><textarea  id="third_answer" name="third_answer" placeholder="troisième réponse" rows="10" cols="50"></textarea><br/><br/></li>
+        <li>1) As-tu aimé ce jeu ? <br/>
+            <input type="radio" name="likeQuestion" value="1" id="1LQ" /> <label for="1LQ">:(</label>
+            <input type="radio" name="likeQuestion" value="2" id="2LQ" /> <label for="2LQ">:|</label>
+            <input type="radio" name="likeQuestion" value="3" id="3LQ" /> <label for="3LQ">:)</label>
+            <input type="radio" name="likeQuestion" value="4" id="4LQ" /> <label for="4LQ">:D</label><br/><br/>
+        </li>
+        <li>2) As-tu trouvé ce jeu rigolo ?<br/>
+            <input type="radio" name="funQuestion" value="oui" id="yesFQ" /> <label for="yesFQ">OUI</label>
+            <input type="radio" name="funQuestion" value="non" id="noFQ" /> <label for="noFQ">NON</label><br/><br/>
+        </li>
+        <li>3)Voudrais-tu rejouer à ce jeu une prochaine fois ?<br/>
+            <input type="radio" name="replayQuestion" value="oui" id="yesRQ" /> <label for="yesRQ">OUI</label>
+            <input type="radio" name="replayQuestion" value="non" id="noRQ" /> <label for="noRQ">NON</label><br/><br/>
+        </li>
 
     </ol>
     <input type="submit" id="sends" name="sends" value="Terminer"/>
 </div>
 
 <script type="text/javascript">
-    var compte;
+    var game;
     var temp;
     var config;
+    var arrayGame;
+    var tab;
+    var i;
 
-    temp = location.search.substring(1);
-    temp = temp.substring(temp.indexOf("=") + 1, temp.length);
-    compte = JSON.parse(window.localStorage.getItem(temp));
+    //temp = location.search.substring(1);
+    //temp = temp.substring(temp.indexOf("=") + 1, temp.length);
+    arrayGame = load_data("arrayGame");
+    game = arrayGame[arrayGame.length - 1];
+    //compte = JSON.parse(window.localStorage.getItem(temp));
     config = JSON.parse(window.localStorage.getItem("config"));
-    document.getElementById('prenom').innerHTML = compte.prenom;
+    /*document.getElementById('prenom').innerHTML = compte.prenom;
     if (config.version === "sad")
     {
         document.getElementById('pairFind').innerHTML = compte.paireClassique;
@@ -60,28 +76,54 @@
         document.getElementById('pairFind').innerHTML = compte.paireHumour;
         document.getElementById('pairTest').innerHTML = compte.paireHumour + compte.echecHumour;
         document.getElementById('time').innerHTML = compte.tempsHumour;
-    }
+    }*/
     document.getElementById('sends').onclick = function()
     {
-        if (String(config.version) === "sad")
+        /*if (String(config.version) === "sad")
         {
             compte.firstAnswerClassique = document.getElementById("first_answer").value;
             compte.secondAnswerClassique = document.getElementById("second_answer").value;
             compte.thirdAnswerClassique = document.getElementById("third_answer").value;
         }
         else
+        {*/
+        tab = document.getElementsByName('likeQuestion');
+        for (i=0;i<tab.length;i++)
         {
-            compte.firstAnswerHumour = document.getElementById("first_answer").value;
-            compte.secondAnswerHumour = document.getElementById("second_answer").value;
-            compte.thirdAnswerHumour = document.getElementById("third_answer").value;
+            if(tab[i].checked)
+            {
+                game.likeQuestion = tab[i].value;
+                break;
+            }
         }
-        var val;
+        tab = document.getElementsByName('funQuestion');
+        for (i=0;i<tab.length;i++)
+        {
+            if(tab[i].checked)
+            {
+                game.funQuestion = tab[i].value;
+                break;
+            }
+        }
+        tab = document.getElementsByName('replayQuestion');
+        for (i=0;i<tab.length;i++)
+        {
+            if(tab[i].checked)
+            {
+                game.replayQuestion = tab[i].value;
+                break;
+            }
+        }
+        arrayGame[arrayGame.length - 1] = game;
+        val = JSON.stringify(arrayGame);
+        window.localStorage.setItem("arrayGame", val);
+        /*var val;
 
         val = JSON.stringify(compte);
         window.localStorage.setItem(String(compte.id), val);
 
-        compte = JSON.parse(window.localStorage.getItem(temp));
-        location.href=("index.html");
+        compte = JSON.parse(window.localStorage.getItem(temp));*/
+        location.href=("index.html");   /*à changer avec la désactivation des elements de la page et/ou le rideau noir*/
     }
 </script>
 </body>

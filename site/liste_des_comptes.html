@@ -15,67 +15,79 @@
         {
             border: 1px solid black; /* auront une bordure de 1px */
         }
+        #Button
+        {
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            width: 600px;
+            height: 100px;
+            /*background-color: red;*/
+        }
     </style>
 </head>
 <body onload="init();">
-
-<table id="tableAccount">
+<table id="tablePlayers">
     <tr>
         <th>Prénom</th>
-        <th>Identifiant</th>
-        <th colspan="3">Version humour</th>
-        <th colspan="3">Version triste</th>
-        <th>lien des réponse</th>
-    </tr>
-    <tr>
-        <th colspan="2"></th>
-        <th>Temps</th>
-        <th>Paire(s) trouvée</th>
-        <th>Tentative échouée</th>
-        <th>Temps</th>
-        <th>Paire(s) trouvée</th>
-        <th>Tentative échouée</th>
+        <th>Nom</th>
+        <th>Date de Naissance</th>
+        <th>Age</th>
+        <th>Classe</th>
+        <th>Sexe</th>
+        <th>Version</th>
+        <th>Date de partie</th>
+        <th>Status</th>
         <th></th>
     </tr>
 </table>
-
-<input type="submit" name="return" id="return" value="Retour" />
+<div id="Button">
+    <input type="submit" name="receive" id="receive" value="Receive" />
+    <input type="submit" name="share" id="share" value="Share" />
+</div>
 
 <script type="text/javascript">
-    var config;
 
-    config = load_data("config");
+    var arrayGame;
+
+    arrayGame = load_data("arrayGame");
+
     function init()
     {
         var compte;
         var i;
         var newRow;
         var newCell;
-/*
-**  rajoute une ligne au tableau par compte avec toute les info du compte.
- */
-        for (i = 1; i <= config.nbUser; i++)
+        /*
+         **  rajoute une ligne au tableau par compte avec toute les info du compte.
+         */
+        for (i = 0; i < arrayGame.length; i++)
         {
-            compte = load_data(i);
-            newRow = document.getElementById('tableAccount').insertRow(-1);
+            compte = arrayGame[i];
+            newRow = document.getElementById('tablePlayers').insertRow(-1);
             newCell = newRow.insertCell(0);
-            newCell.innerHTML = compte.prenom;
+            newCell.innerHTML = compte.firstname;
             newCell = newRow.insertCell(1);
-            newCell.innerHTML = compte.id;
+            newCell.innerHTML = compte.name;
             newCell = newRow.insertCell(2);
-            newCell.innerHTML = compte.tempsHumour;
+            newCell.innerHTML = compte.birthdate;
             newCell = newRow.insertCell(3);
-            newCell.innerHTML = compte.paireHumour;
+            newCell.innerHTML = compte.age;
             newCell = newRow.insertCell(4);
-            newCell.innerHTML = compte.echecHumour;
+            newCell.innerHTML = compte.classe;
             newCell = newRow.insertCell(5);
-            newCell.innerHTML = compte.tempsClassique;
+            newCell.innerHTML = compte.sex;
             newCell = newRow.insertCell(6);
-            newCell.innerHTML = compte.paireClassique;
+            newCell.innerHTML = compte.version;
             newCell = newRow.insertCell(7);
-            newCell.innerHTML = compte.echecClassique;
+            newCell.innerHTML = compte.date;
             newCell = newRow.insertCell(8);
-            newCell.innerHTML = '<a href="Réponse.html?id=' + compte.id + '">réponse</a>';
+            if (compte.id === "")
+                newCell.innerHTML = 'Unsent';
+            else
+                newCell.innerHTML = 'Sent';
+            newCell = newRow.insertCell(9);
+            newCell.innerHTML = '<input type="checkbox" name="sent" id="' + i + '" />';
         }
     }
 

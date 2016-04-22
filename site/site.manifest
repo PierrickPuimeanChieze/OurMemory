@@ -1,28 +1,37 @@
 CACHE MANIFEST
 
-# v0.0.4
+# v0.1.0
 
 CACHE:
+Configuration.html
+existing_player.html
 index.html
+liste_des_comptes.html
 memory.html
+NewPlayer.html
+Réponse.html
 resultat.html
+Rules.html
 
 script/memory.js
 http://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js
 
 images/humors/background.png
-images/humors/ballon_foot.gif
-images/humors/bottes.jpg
-images/humors/ecureuil.png
-images/humors/fleur.png
 images/humors/Image-1.png
 images/humors/Image-2.png
 images/humors/Image-3.png
 images/humors/Image-4.png
 images/humors/Image-5.png
 images/humors/Image-6.png
-images/humors/pomme.png
-images/humors/taxi.jpg
+images/humors/Image-7.png
+images/humors/Image-8.png
+images/humors/Image-9.png
+images/humors/Image-10.png
+images/humors/Image-11.png
+images/humors/Image-12.png
+images/humors/Image-13.png
+images/humors/Image-14.png
+images/humors/Image-15.png
 
 images/sad/background.png
 images/sad/Image-1.png
@@ -31,7 +40,18 @@ images/sad/Image-3.png
 images/sad/Image-4.png
 images/sad/Image-5.png
 images/sad/Image-6.png
+images/sad/Image-7.png
+images/sad/Image-8.png
+images/sad/Image-9.png
+images/sad/Image-10.png
+images/sad/Image-11.png
+images/sad/Image-12.png
+images/sad/Image-13.png
+images/sad/Image-14.png
+images/sad/Image-15.png
 
+CSS/Configuration.css
+CSS/Index.css
 CSS/memory.css
 CSS/memoryhumors.css
 CSS/memorysad.css

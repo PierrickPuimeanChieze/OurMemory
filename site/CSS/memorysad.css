@@ -1,7 +1,7 @@
 /* classe destiné a l'élément contenant une carte. Son image de backgroud sera le dos de la carte*/
 .image-cell
 {
-    background-image: url("../images/sad/background.png");
+    background-image: url("../images/sad/background.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% 100%;

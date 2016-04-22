@@ -25,11 +25,38 @@ function create_config()
     config ={
         //version: "humors",
         time: 45,           //durée du chrono en secondes.
-        counter: 45,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
+        counter: 45         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
         //see: "test",        //code de disposition aléatoire
         //nbpair: 6,          //Nombre de paire du jeu.
-        nbgame: 0           //Nombre de partie créé.
+        //nbgame: 0           //Nombre de partie créé.
     };
 
     return config;
+}
+
+function newGame()
+{
+    var newGame;
+
+    newGame = {
+        "firstname": "firstname", //Prénom
+        "name": "name", //Nom
+        "birthdate": "2015-16-02", //Date de naissance au format ISO : YYYY-MM-DD
+        "age": 32, //age. Pas de controle par rapport à la date de naissance
+        "classe": "CM2",
+        "sex": "M | F", //le sexe du joueur
+        "version": "standard | humor", // la version joué
+        "date": "2015-12-31", //Date de la partie  au format ISO : YYYY-MM-DD
+        "preGameVisibilityDuration": 45, // le nombre de secondes pendant lesquelles les cartes ont été visibles
+        "gameLimit": 45, //Durée de comptabilisation intermédiaires
+        "triesBeforeGameLimit": 999, //Nombres de couprs joués avant la limitre de comptabilisation
+        "pairsfoundBeforGameLimit": 999, //Nombre de paires trouvées avant la limite de comptabilisation
+        "totalTries": 0, // Nombre d'essai total
+        "totalDuration": 0, //Durée total de la partie en secondes
+        "likeQuestion": "",
+        "funQuestion": "",
+        "replayQuestion": "",
+        "id": "" //identifiant générés par le serveur
+    };
+    return newGame;
 }
