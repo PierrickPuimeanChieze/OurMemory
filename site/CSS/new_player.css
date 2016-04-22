@@ -1,0 +1,13 @@
+
+td
+{
+    padding-bottom: 10px;   /*Pour augmenter l'espace entre les lignes*/
+}
+#Button
+{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+}

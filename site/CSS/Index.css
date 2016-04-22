@@ -1,3 +1,8 @@
+body
+{
+    background: url(../images/wallpaper/fondecran.jpg) no-repeat fixed;
+    background-size: cover;
+}
 #index
 {
     display: flex;
@@ -5,15 +10,25 @@
     justify-content: space-between;
     align-items: center;
     height: 150px;             /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
-    /*background-color: blue;*/    /*pour tester*/
+    /* background-color: blue; */    /*pour tester*/
     padding : 5px
 }
 
 .indexbutton
 {
     width: 150px;
+    background-color: #ffff99;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    box-shadow: 8px 8px 12px #000000;
+    /* background:url(images/bouton-noir.png) no-repeat; */
 }
-
+.indexbutton:hover
+{
+    width: 150px;
+    background-color: #ffccff;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
 .indexbutton:nth-child(1)
 {
     align-self: flex-end;

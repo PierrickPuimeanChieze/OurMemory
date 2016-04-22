@@ -3,32 +3,10 @@
 <head>
 
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/rules.css" />
     <title>Mémory : Version d'essai, Règles</title>
 
-    <style>
-        article
-        {
-            display: flex;
-            justify-content:center;
-            align-items: center;
-            height: 550px;
-            background-color: blue;
-        }
-        #rules
-        {
-            height: 75%;            /*Pas trouver le moyen que cela prennent automatiquement la taille du texte*/
-            /*width: 75%;*/
-            background-color: red;
-        }
-        #Button
-        {
-            display: flex;
-            justify-content:center;
-            align-items: center;
-            /*width: 200px;*/
-            height: 100px;
-        }
-    </style>
+    <script type="application/javascript" src="script/rules.js"></script>
 </head>
 <body onload="init();">
 <article id="art">
@@ -42,24 +20,5 @@
 <div id="Button">
     <input type="submit" id="start" name="start" value="Démarrer la partie"/>
 </div>
-
-<script>
-    document.getElementById('start').onclick = function() {
-        location.href=("memory.html");
-    };
-</script>
-
-<!--<script src="jquery.js">
-
-    var     rules;
-
-    rules = JSON.parse("Règles/règles.JSON");
-
-    function init()
-    {
-        document.getElementById('art').value = rules;
-    }
-</script>-->
-
 </body>
 </html>

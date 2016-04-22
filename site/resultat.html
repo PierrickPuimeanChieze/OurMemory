@@ -5,29 +5,13 @@
     <meta charset="utf-8">
     <title>Mémory : Version d'essai, resultat</title>
 
+    <script type="application/javascript" src="script/resultat.js"></script>
 </head>
 
 <body>
 <p>
     Félicitations <span id="prenom"></span>. Le jeu est terminé.
 </p>
-<!--<table>
-    <tr>
-        <th>Résultats</th>
-    </tr>
-    <tr>
-        <td>Nombres d'essais :</td>
-        <td><span id="pairTest"></span></td>
-    </tr>
-    <tr>
-        <td>Paires trouvées :</td>
-        <td><span id="pairFind"></span></td>
-    </tr>
-    <tr>
-        <td>Temps écoulé :</td>
-        <td><span id="time"></span> seconde(s)</td>
-    </tr>
-</table>-->
 <div>
     <p>Voici trois question, veuillez y répondre</p>
     <ol>
@@ -49,82 +33,5 @@
     </ol>
     <input type="submit" id="sends" name="sends" value="Terminer"/>
 </div>
-
-<script type="text/javascript">
-    var game;
-    var temp;
-    var config;
-    var arrayGame;
-    var tab;
-    var i;
-
-    //temp = location.search.substring(1);
-    //temp = temp.substring(temp.indexOf("=") + 1, temp.length);
-    arrayGame = load_data("arrayGame");
-    game = arrayGame[arrayGame.length - 1];
-    //compte = JSON.parse(window.localStorage.getItem(temp));
-    config = JSON.parse(window.localStorage.getItem("config"));
-    /*document.getElementById('prenom').innerHTML = compte.prenom;
-    if (config.version === "sad")
-    {
-        document.getElementById('pairFind').innerHTML = compte.paireClassique;
-        document.getElementById('pairTest').innerHTML = compte.paireClassique + compte.echecClassique;
-        document.getElementById('time').innerHTML = compte.tempsClassique;
-    }
-    else
-    {
-        document.getElementById('pairFind').innerHTML = compte.paireHumour;
-        document.getElementById('pairTest').innerHTML = compte.paireHumour + compte.echecHumour;
-        document.getElementById('time').innerHTML = compte.tempsHumour;
-    }*/
-    document.getElementById('sends').onclick = function()
-    {
-        /*if (String(config.version) === "sad")
-        {
-            compte.firstAnswerClassique = document.getElementById("first_answer").value;
-            compte.secondAnswerClassique = document.getElementById("second_answer").value;
-            compte.thirdAnswerClassique = document.getElementById("third_answer").value;
-        }
-        else
-        {*/
-        tab = document.getElementsByName('likeQuestion');
-        for (i=0;i<tab.length;i++)
-        {
-            if(tab[i].checked)
-            {
-                game.likeQuestion = tab[i].value;
-                break;
-            }
-        }
-        tab = document.getElementsByName('funQuestion');
-        for (i=0;i<tab.length;i++)
-        {
-            if(tab[i].checked)
-            {
-                game.funQuestion = tab[i].value;
-                break;
-            }
-        }
-        tab = document.getElementsByName('replayQuestion');
-        for (i=0;i<tab.length;i++)
-        {
-            if(tab[i].checked)
-            {
-                game.replayQuestion = tab[i].value;
-                break;
-            }
-        }
-        arrayGame[arrayGame.length - 1] = game;
-        val = JSON.stringify(arrayGame);
-        window.localStorage.setItem("arrayGame", val);
-        /*var val;
-
-        val = JSON.stringify(compte);
-        window.localStorage.setItem(String(compte.id), val);
-
-        compte = JSON.parse(window.localStorage.getItem(temp));*/
-        location.href=("index.html");   /*à changer avec la désactivation des elements de la page et/ou le rideau noir*/
-    }
-</script>
 </body>
 </html>

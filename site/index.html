@@ -7,6 +7,7 @@
     <title>Mémory : Version d'essai, Accueil</title>
 
     <script type="application/javascript" src="script/Data_management.js"></script>
+    <script type="application/javascript" src="script/index.js"></script>
 </head>
 
 <body onload="init();">
@@ -16,117 +17,5 @@
         <input type="submit" class="indexbutton" id="newPlayer" name="newPlayer" value="Nouveau Joueur" />
         <input type="submit" class="indexbutton" id="existingPlayer" name="existingPlayer" value="Joueur existant" />
     </div>
-
-<script type="text/javascript">
-    var     config;
-    var     val;
-
-    function init()
-    {
-        config = load_data("config");
-        if (config == null)
-            config = create_config();
-        //window.localStorage.clear();      //ligne pour effacer tout les donner rentrer dans le localStorage
-        val = JSON.stringify(config);
-        window.localStorage.setItem("config", val);     /*Pour le cas ou on ne passe pas par la page reglage*/
-    }
-
-    document.getElementById('config').onclick = function() {
-        location.href=("Configuration.html");
-    };
-
-    document.getElementById('newPlayer').onclick = function() {
-        location.href=("NewPlayer.html");
-    };
-
-    document.getElementById('existingPlayer').onclick = function() {
-        location.href=("existing_player.html");   /*page pas encore créer*/
-    };
-
-</script>
 </body>
-<!--
-<body onload="init();">
-    <p>
-        Pour une première partie veuillez entrer votre prénom :
-        <input type="text" id="first_name" name="first_name" placeholder="Entrez votre prénom" autofocus/>
-        <input type="submit" id="sendsName" name="sendsName" value="Créer" /><br />
-        Sinon entrez votre identifiant :
-        <input type="text" id="id" name="id" placeholder="Entrez votre identifiant" />
-        <input type="submit" id="sendsId" name="sendsId" /><br />
-        <br />
-        <input type="submit" id="config" name="config" value="Configuration" /><br />
-    </p>
-
-    <script type="text/javascript">
-    var     compte;
-    var     config;
-    var     val;
-
-    compte  ={
-                prenom: "prenom",
-                id: 999,
-                tempsHumour: 9999,
-                paireHumour: 9999,
-                echecHumour: 9999,
-                tempsClassique: 9999,
-                paireClassique: 9999,
-                echecClassique: 9999,
-                firstAnswerHumour: "firstAnswerHumour",
-                secondAnswerHumour: "secondAnswerHumour",
-                thirdAnswerHumour: "thirdAnswerHumour",
-                firstAnswerClassique: "firstAnswerClassique",
-                secondAnswerClassique: "secondAnswerClassique",
-                thirdAnswerClassique: "thirdAnswerClassique"
-    };
-
-    /*
-    **  fonction pour charger la configuration et la créer si il n'y en a pas encore.
-    */
-    function init()
-    {
-        config = load_data("config");
-        if (config == null)
-            config = create_config();
-        //window.localStorage.clear();      //ligne pour effacer tout les donner rentrer dans le localStorage
-    }
-
-    /*
-    **  au final il faudra peut être une verification  si l'id est determiner par les info rentré lors
-    **  de la création du compte.
-    **  crée un nouveau compte. Une fonction pour le faire est envisager pour remplacer la variable créé dans le script.
-     */
-    document.getElementById('sendsName').onclick = function(){
-        if (document.getElementById('first_name').value === "")
-            alert("Veulliez rentrer votre prénom.");
-        else
-        {
-            compte.prenom = document.getElementById('first_name').value;
-            compte.id = config.nbUser + 1;
-            config.nbUser = config.nbUser + 1;
-            val = JSON.stringify(compte);
-            window.localStorage.setItem(String(compte.id), val);
-            val = JSON.stringify(config);
-            window.localStorage.setItem("config", val);
-            location.href = ("memory.html?id=" + compte.id);
-        }
-    };
-
-    /*
-    **  Vérifie que l'identifiant rentrer existe.
-     */
-    document.getElementById('sendsId').onclick = function() {
-        compte = load_data(document.getElementById('id').value);
-        if (compte != null)
-            location.href = ("memory.html?id=" + compte.id);
-        else
-            alert("Votre identifiant n'est pas valide ou n'existe pas.\n Veuillez le rentrer correctement ou créer un nouveau compte.");
-    };
-
-    document.getElementById('config').onclick = function() {
-        location.href=("Configuration.html");
-    };
-    </script>
-</body>
--->
 </html>

@@ -1,0 +1,19 @@
+
+table
+{
+    border-collapse: collapse;
+}
+
+td,th
+{
+    border: 1px solid black;
+}
+#Button
+{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    width: 600px;
+    height: 100px;
+    /*background-color: red;*/
+}
