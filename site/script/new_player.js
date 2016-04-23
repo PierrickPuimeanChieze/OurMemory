@@ -23,10 +23,8 @@ function init()
         game = load_data("secondGame");
         window.localStorage.removeItem("secondGame");
         prefilling();
-        document.getElementById('validate').onclick = validate2;
     }
-    else
-        document.getElementById('validate').onclick = validate;
+    document.getElementById('validate').onclick = validate;
 }
 
 function validate()

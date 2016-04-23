@@ -35,9 +35,7 @@ function init()
     /*arrayGame = load_data("arrayGame");
     game = arrayGame[arrayGame.length - 1];*/
     game = load_data("newGame");
-    alert("debug");
     remainingTime   = game.gameLimit;
-    alert("debug");
     initCSS();
     randomPlacementCards();
 
@@ -167,7 +165,7 @@ function endTimer()
  */
 function endGame()
 {
-    alert("Fin de la partie");
+    //alert("Fin de la partie");
     clearInterval(intervalId);
     game.totalTries = nbtest;
     game.totalDuration = timegame;

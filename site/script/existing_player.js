@@ -4,7 +4,6 @@
 
 var arrayGame;
 
-arrayGame = load_data("arrayGame");
 
 function init()
 {
@@ -13,6 +12,8 @@ function init()
     var newRow;
     var newCell;
     var button;
+
+    arrayGame = load_data("arrayGame");
     /*
      **  rajoute une ligne au tableau par compte avec toute les info du compte.
      */
