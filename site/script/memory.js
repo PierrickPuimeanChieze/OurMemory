@@ -8,7 +8,6 @@ var     nbtest;         //nombre de coup joué.
 var     gameStarted;    //indique si la partie est commencé ou pas.
 var     intervalId = null;
 var     remainingTime;  //temps restant
-var     config;
 var     imageNumber;    //Le nombre d'images disponibles dans le repertoire image. Chaque image doit être nommée "Image-<indexNbr>.png
 var     counter;
 var     timegame;
@@ -20,7 +19,7 @@ nbtest          = 0;
 cardReturned    = null;
 gameStarted     = 0;
 cards           = document.getElementsByClassName("card");
-imageNumber     = 15;
+imageNumber     = 14;
 timegame        = 0;
 
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
@@ -32,23 +31,20 @@ function init()
     //r     cards = document.getElementsByClassName("card");
     //Et pour chacun d'entre eux
     var     i;
-    //var     start;
-    //var     url;
 
-    //start = document.getElementById("start");
-    //url = location.search;
-    //id = url.substring(url.indexOf("=")+1);
-    arrayGame = load_data("arrayGame");
-    game = arrayGame[arrayGame.length - 1];
-    config = JSON.parse(window.localStorage.getItem("config"));
-    remainingTime   = config.time;
+    /*arrayGame = load_data("arrayGame");
+    game = arrayGame[arrayGame.length - 1];*/
+    game = load_data("newGame");
+    alert("debug");
+    remainingTime   = game.gameLimit;
+    alert("debug");
     initCSS();
     randomPlacementCards();
 
     for (i = 0; i < cards.length; i++)
     {
         //On fait en sorte que la méthode clickCard soit appellée quand on l'utilisateur clique dessus
-        cards[i].onclick = clickCard
+        cards[i].onclick = clickCard;
     }
 
     //P.S. : on aurait pu effectuer cette association dans le code html directement, via l'attribut onclick
@@ -61,7 +57,6 @@ function init()
     //start.onclick = starGame;
     document.getElementById('prenom').innerHTML = game.firstname;
     starGame();
-    endGame();
 }
 
 //Cette méthode doit être appelée quand l'utilisateur clique sur une carte
@@ -135,10 +130,10 @@ function starGame()
     for (i = 0; i < cards.length; i++)
         cards[i].className = "card front-visible";
     document.getElementById("start").style.display = 'none';
-    document.getElementById("timer").innerHTML = "La partie commence dans " + config.counter + " secondes.";
-    counter = config.counter;
+    document.getElementById("timer").innerHTML = "La partie commence dans " + game.preGameVisibilityDuration + " secondes.";
+    counter = game.preGameVisibilityDuration;
     intervalId = setInterval(bip, 1000);
-    setTimeout(endTimer, config.counter * 1000);
+    setTimeout(endTimer, game.preGameVisibilityDuration * 1000);
 }
 
 /*
@@ -174,23 +169,13 @@ function endGame()
 {
     alert("Fin de la partie");
     clearInterval(intervalId);
-    /*if (config.version === "sad")
-    {
-        compte.paireClassique = pairFind;
-        compte.echecClassique = nbtest - pairFind;
-        compte.tempsClassique = config.time - remainingTime;
-    }
-    else
-    {
-        compte.paireHumour = pairFind;
-        compte.echecHumour = nbtest - pairFind;
-        compte.tempsHumour = config.time - remainingTime;
-    }*/
     game.totalTries = nbtest;
     game.totalDuration = timegame;
-    arrayGame[arrayGame.length - 1] = game;
+    /*arrayGame[arrayGame.length - 1] = game;
     val = JSON.stringify(arrayGame);
-    window.localStorage.setItem("arrayGame", val);
+    window.localStorage.setItem("arrayGame", val);*/
+    val = JSON.stringify(game);
+    window.localStorage.setItem("newGame", val);
     location.href=("resultat.html");
 }
 

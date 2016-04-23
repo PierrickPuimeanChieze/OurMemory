@@ -1,8 +1,10 @@
 /**Created by Shimishsar on 22/04/2016.**/
-
-document.getElementById('start').onclick = function() {
-    location.href=("memory.html");
-};
+function init()
+{
+    document.getElementById('start').onclick = function() {
+        location.href=("memory.html");
+    };
+}
 
 
 /*var     rules;

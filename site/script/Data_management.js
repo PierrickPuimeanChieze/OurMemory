@@ -36,8 +36,10 @@ function create_config()
 
 function newGame()
 {
+    var config;
     var newGame;
 
+    config = load_data("config");
     newGame = {
         "firstname": "firstname", //Prénom
         "name": "name", //Nom
@@ -58,5 +60,8 @@ function newGame()
         "replayQuestion": "",
         "id": "" //identifiant générés par le serveur
     };
+
+    newGame.preGameVisibilityDuration = config.counter;
+    newGame.gameLimit = config.time;
     return newGame;
 }

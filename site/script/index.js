@@ -10,17 +10,16 @@ function init()
     //window.localStorage.clear();      //ligne pour effacer tout les donner rentrer dans le localStorage
     val = JSON.stringify(config);
     window.localStorage.setItem("config", val);     /*Pour le cas ou on ne passe pas par la page reglage*/
+
+    document.getElementById('config').onclick = function() {
+        location.href=("Configuration.html");
+    };
+
+    document.getElementById('newPlayer').onclick = function() {
+        location.href=("NewPlayer.html");
+    };
+
+    document.getElementById('existingPlayer').onclick = function() {
+        location.href=("existing_player.html");
+    };
 }
-
-document.getElementById('config').onclick = function() {
-    location.href=("Configuration.html");
-};
-
-document.getElementById('newPlayer').onclick = function() {
-    location.href=("NewPlayer.html");
-};
-
-document.getElementById('existingPlayer').onclick = function() {
-    location.href=("existing_player.html");   /*page pas encore créer*/
-};
-

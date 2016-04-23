@@ -43,11 +43,25 @@ function init()
     button = document.getElementsByName("creategame");
     for (i = 0; i < button.length; i++)
     {
-        button[i].onclick = creategame
+        //button[i].onclick = creategame;
+        button[i].onclick = secondGame;
     }
 }
 
-function creategame(mouseEvent)
+function secondGame(mouseEvent)
+{
+    var     secondGame;
+    var     select;
+    var     index;
+
+    select = mouseEvent.target;
+    index = select.id;
+    secondGame = arrayGame[index];
+    window.localStorage.setItem("secondGame", JSON.stringify(secondGame));
+    location.href=("NewPlayer.html");
+}
+
+/*function creategame(mouseEvent)
 {
     var     index;
     var     newindex;
@@ -62,9 +76,7 @@ function creategame(mouseEvent)
     index = select.id;
     newindex = arrayGame.length;
     arrayGame[arrayGame.length] = newGame();
-    alert("debug_" + arrayGame[newindex].firstname);
     arrayGame[newindex].firstname = arrayGame[index].firstname;
-    alert("debug_");
     arrayGame[newindex].name = arrayGame[index].name;
     arrayGame[newindex].birthdate = arrayGame[index].birthdate;
     arrayGame[newindex].age = arrayGame[index].age;
@@ -80,7 +92,7 @@ function creategame(mouseEvent)
     val = JSON.stringify(arrayGame);
     window.localStorage.setItem("arrayGame", val);
     location.href=("Rules.html");
-}
+}*/
 
 /*document.getElementsByName('creategame').onclick = function() {                     //à verifier pas sur que cela marche
  arrayGame[arrayGame.length] = newGame();

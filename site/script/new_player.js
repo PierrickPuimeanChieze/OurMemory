@@ -18,7 +18,15 @@ function init()
 
     if(load_data("arrayGame") !== null)
         arrayGame = load_data("arrayGame");
-    document.getElementById('validate').onclick = validate;
+    if (load_data("secondGame") !== null)
+    {
+        game = load_data("secondGame");
+        window.localStorage.removeItem("secondGame");
+        prefilling();
+        document.getElementById('validate').onclick = validate2;
+    }
+    else
+        document.getElementById('validate').onclick = validate;
 }
 
 function validate()
@@ -50,11 +58,38 @@ function validate()
         }
     }
     game.date = now.getFullYear() + "-" + ('0'+(now.getMonth()+1)).slice(-2) + "-" + ('0'+now.getDate()).slice(-2);
-    game.preGameVisibilityDuration = config.counter;
-    game.gameLimit = config.time;
-    val = arrayGame.length;
-    arrayGame[val] = game;
-    val = JSON.stringify(arrayGame);
-    window.localStorage.setItem("arrayGame", val);
+    val = JSON.stringify(game);
+    window.localStorage.setItem("newGame", val);
     location.href=("Rules.html");
+}
+
+function prefilling()
+{
+    var i;
+    var tab;
+
+    document.getElementById('firstName').value = game.firstname;
+    document.getElementById('name').value = game.name;
+    document.getElementById('birthDate').value = game.birthdate;
+    document.getElementById('age').value = game.age;
+    document.getElementById('class').value = game.classe;
+    tab = document.getElementsByName('gender');
+    for (i=0;i<tab.length;i++)
+    {
+        if(tab[i].value === game.sex)
+        {
+            tab[i].checked = true;
+            break;
+        }
+    }
+    tab = document.getElementsByName('version');
+    for (i=0;i<tab.length;i++)
+    {
+        if(tab[i].value !== game.version)
+        {
+            tab[i].checked = game.version;
+            break;
+        }
+    }
+    game.date = now.getFullYear() + "-" + ('0'+(now.getMonth()+1)).slice(-2) + "-" + ('0'+now.getDate()).slice(-2);
 }

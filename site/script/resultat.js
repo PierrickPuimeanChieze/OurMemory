@@ -11,8 +11,9 @@ var i;
 var val;
 
 arrayGame = load_data("arrayGame");
-game = arrayGame[arrayGame.length - 1];
-config = JSON.parse(window.localStorage.getItem("config"));
+/*game = arrayGame[arrayGame.length - 1];
+config = JSON.parse(window.localStorage.getItem("config"));*/
+game = load_data("newGame");
 document.getElementById('prenom').innerHTML = game.firstname;
 document.getElementById('sends').onclick = function()
 {
@@ -43,7 +44,7 @@ document.getElementById('sends').onclick = function()
             break;
         }
     }
-    arrayGame[arrayGame.length - 1] = game;
+    arrayGame[arrayGame.length] = game;
     val = JSON.stringify(arrayGame);
     window.localStorage.setItem("arrayGame", val);
     location.href=("index.html");   /*à changer avec la désactivation des elements de la page et/ou le rideau noir*/
