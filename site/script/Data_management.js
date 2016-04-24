@@ -25,8 +25,8 @@ function create_config()
     config ={
         //version: "humors",
         time: 45,           //durée du chrono en secondes.
-        counter: 45         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
-        //see: "test",        //code de disposition aléatoire
+        counter: 45,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
+        seed: "test"        //code de disposition aléatoire
         //nbpair: 6,          //Nombre de paire du jeu.
         //nbgame: 0           //Nombre de partie créé.
     };
@@ -55,6 +55,7 @@ function newGame()
         "pairsfoundBeforGameLimit": 999, //Nombre de paires trouvées avant la limite de comptabilisation
         "totalTries": 0, // Nombre d'essai total
         "totalDuration": 0, //Durée total de la partie en secondes
+        "seed": "",
         "likeQuestion": "",
         "funQuestion": "",
         "replayQuestion": "",
@@ -63,5 +64,6 @@ function newGame()
 
     newGame.preGameVisibilityDuration = config.counter;
     newGame.gameLimit = config.time;
+    newGame.seed = config.seed;
     return newGame;
 }

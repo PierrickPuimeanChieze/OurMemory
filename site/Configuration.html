@@ -13,11 +13,15 @@
 <table id="compteur">
     <tr>
         <td><label for="timeGame">Durée de la partie</label></td>
-        <td><input type="number" id="timeGame" name="timeGame"/></td>
+        <td><input type="number" id="timeGame" name="timeGame" min="1" max="300"/></td>
     </tr>
     <tr>
         <td><label for="timeMemo">Durée de visibilité</label></td>
-        <td><input type="number" id="timeMemo" name="timeMemo"/></td>
+        <td><input type="number" id="timeMemo" name="timeMemo" min="1" max="60"/></td>
+    </tr>
+    <tr>
+        <td><label for="seed">Graine de hazard</label></td>
+        <td><input type="text" id="seed" name="seed"/></td>
     </tr>
 </table>
 

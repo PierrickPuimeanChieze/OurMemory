@@ -21,6 +21,7 @@ function updateConfig()
 
     config.time = document.getElementById('timeGame').value;
     config.counter = document.getElementById('timeMemo').value;
+    config.seed = document.getElementById('seed').value;
     val = JSON.stringify(config);
     window.localStorage.setItem("config", val);
 }
@@ -32,6 +33,7 @@ function updatePage()
 {
     document.getElementById('timeGame').value = config.time;
     document.getElementById('timeMemo').value = config.counter;
+    document.getElementById('seed').value = config.seed;
 }
 
 function validate()

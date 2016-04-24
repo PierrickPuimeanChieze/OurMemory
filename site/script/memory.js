@@ -195,7 +195,7 @@ function randomPlacementCards()
         //et on arrète la methode
         return;
     }
-    Math.seedrandom("TEST");
+    Math.seedrandom(game.seed);
 
     //Pour chacun des element carte restant encore a remplir
     while (remainingCardElements.length>0) {

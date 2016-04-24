@@ -89,5 +89,4 @@ function prefilling()
             break;
         }
     }
-    game.date = now.getFullYear() + "-" + ('0'+(now.getMonth()+1)).slice(-2) + "-" + ('0'+now.getDate()).slice(-2);
 }

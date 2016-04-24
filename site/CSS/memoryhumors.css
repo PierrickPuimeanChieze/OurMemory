@@ -2,7 +2,4 @@
 .image-cell
 {
     background-image: url("../images/humors/background.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% 100%;
 }
