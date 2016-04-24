@@ -5,8 +5,9 @@ var     val;
 function init()
 {
     config = load_data("config");
-    if (config == null)
+    if (config === null)
         config = create_config();
+    //window.localStorage.removeItem("config");
     //window.localStorage.clear();      //ligne pour effacer tout les donner rentrer dans le localStorage
     val = JSON.stringify(config);
     window.localStorage.setItem("config", val);     /*Pour le cas ou on ne passe pas par la page reglage*/
@@ -21,5 +22,9 @@ function init()
 
     document.getElementById('existingPlayer').onclick = function() {
         location.href=("existing_player.html");
+    };
+
+    document.getElementById('savedGames').onclick = function() {
+        location.href=("liste_des_comptes.html");
     };
 }

@@ -5,15 +5,15 @@ var     game;
 var     now;
 var     arrayGame = new Array;
 
-now = new Date();
-
-game = newGame();
 /*
  **  fonction initialisation de la page.
  */
 
 function init()
 {
+    now = new Date();
+
+    game = newGame();
     config = load_data("config");
 
     if(load_data("arrayGame") !== null)

@@ -13,19 +13,18 @@ var     counter;
 var     timegame;
 var     arrayGame;
 
-cReturn         = 0;
-pairFind        = 0;
-nbtest          = 0;
-cardReturned    = null;
-gameStarted     = 0;
-cards           = document.getElementsByClassName("card");
-imageNumber     = 14;
-timegame        = 0;
-
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
 function init()
 {
+    cReturn         = 0;
+    pairFind        = 0;
+    nbtest          = 0;
+    cardReturned    = null;
+    gameStarted     = 0;
+    cards           = document.getElementsByClassName("card");
+    imageNumber     = 14;
+    timegame        = 0;
     //var     id;
     //On récupère tous les éléments de type card
     //r     cards = document.getElementsByClassName("card");
