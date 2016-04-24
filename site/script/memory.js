@@ -127,7 +127,6 @@ function starGame()
 
     for (i = 0; i < cards.length; i++)
         cards[i].className = "card front-visible";
-    document.getElementById("start").style.display = 'none';
     document.getElementById("timer").innerHTML = "La partie commence dans " + game.preGameVisibilityDuration + " secondes.";
     counter = game.preGameVisibilityDuration;
     intervalId = setInterval(bip, 1000);
@@ -234,3 +233,20 @@ function initCSS()
 {
     document.getElementById("version").href = "CSS/memory" + game.version + ".css"
 }
+
+/*function height(bloc){
+    var hauteur;
+
+    if( typeof( window.innerWidth ) == 'number' )
+        hauteur = window.innerHeight;
+    else if( document.documentElement && document.documentElement.clientHeight )
+        hauteur = document.documentElement.clientHeight;
+
+    document.getElementById(bloc).style.height = hauteur+"px";
+}
+
+window.onload = height("page");
+window.onresize = height("page");*/
+
+//window.onload = function(){ height("page") };
+//window.onresize = function(){ height("page") };

@@ -1,4 +1,18 @@
+/*html {
+    height: 100%;
+}*/
 
+/*body {
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+    background-color: yellow;
+}
+
+div {
+    background-color: red;
+    width: 100%;
+}*/
 /* Cette classe est destiné aux images contenant les cartes, quand elles sont face cachée
 Dans cet état elles sont invisibles, laissant voir l'image de l'élément les contenant. Cf. la classe image-cell*/
 img.back-visible {
@@ -19,10 +33,12 @@ img.pair-find {
 }
 
 table{
-    min-width: 400px;
-    min-height: 300px;
-    width: 65%;
-    height: 90%;
+    /*max-width: 700px;
+    max-height: 400px;
+    min-width: 350px;
+    min-height: 200px;*/
+    /*width: 175%;*/
+    /*height: 175%*/
 }
 
 img{
