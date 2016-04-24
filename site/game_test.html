@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="CSS/game_test.css" />
+    <title>Mémory : Version d'essai, Entrainement</title>
+
+    <script type="application/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js"></script>
+    <script type="application/javascript" src="script/Data_management.js"></script>
+    <script type="application/javascript" src="script/game_test.js"></script>
+</head>
+<body onload="init();">
+    <div id="present">
+        As-tu compris? Essayes de résoudre ce petit entrainement.
+    </div>
+    <table>
+    <tr>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-1.jpg"/></td>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-2.jpg"/></td>
+    </tr>
+    <tr>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-1.jpg"/></td>
+        <td class="image-cell"><img class="card back-visible" src="images/sad/Image-2.jpg"/></td>
+    </tr>
+</table>
+<div id="playerButton">
+    <input type="submit" class="indexbutton" id="rules" name="rules" value="Relire les règles" />
+    <input type="submit" class="indexbutton" id="memory" name="memory" value="Commencer la partie" />
+</div>
+
+</body>
+</html>

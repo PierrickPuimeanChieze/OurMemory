@@ -1,10 +1,11 @@
 CACHE MANIFEST
 
-# v0.1.5
+# v0.2.0
 
 CACHE:
 Configuration.html
 existing_player.html
+game_test.html
 index.html
 liste_des_comptes.html
 memory.html
@@ -16,6 +17,7 @@ Rules.html
 script/configuration.js
 script/Data_management.js
 script/existing_player.js
+script/game_test.js
 script/index.js
 script/liste_des_compte.js
 script/memory.js
@@ -39,7 +41,6 @@ images/humors/Image-11.png
 images/humors/Image-12.png
 images/humors/Image-13.png
 images/humors/Image-14.png
-images/humors/Image-15.png
 
 images/sad/background.png
 images/sad/Image-1.png
@@ -56,7 +57,6 @@ images/sad/Image-11.png
 images/sad/Image-12.png
 images/sad/Image-13.png
 images/sad/Image-14.png
-images/sad/Image-15.png
 
 images/wallpaper/fondecran.jpg
 images/wallpaper/fondecranG.jpg
@@ -64,6 +64,7 @@ images/wallpaper/fondecranG.jpg
 
 CSS/Configuration.css
 CSS/existing_player.css
+CSS/game_test.css
 CSS/Index.css
 CSS/liste_des_compte.css
 CSS/memory.css

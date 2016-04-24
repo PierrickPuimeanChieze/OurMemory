@@ -67,3 +67,39 @@ function newGame()
     newGame.seed = config.seed;
     return newGame;
 }
+
+function randomPlacementCards(cards, game)
+{
+    //Ici on créé un tableau modifiable d'element a modifier, ceci afin de pouvoir retirer un element carte quand il a été associé a une image
+    var remainingCardElements = Array.prototype.slice.call(cards);
+    var imageIndex = 1;
+
+    //Si le nombre de cartes à placer est impair
+    if (remainingCardElements.length % 2 >0) {
+        //On affiche une erreur
+        window.alert("WARNING ! Nombre de cartes impaire sur le tableau");
+        //et on arrète la methode
+        return;
+    }
+    Math.seedrandom(game.seed);
+
+    //Pour chacun des element carte restant encore a remplir
+    while (remainingCardElements.length>0) {
+        //Par deux fois
+        for (var i =0; i<2 ;i++) {
+            //On en récupère un au hasard
+            var elementIndex = Math.floor(Math.random()*remainingCardElements.length);
+            //On change sa source pour l'image actuellement pointée par imageIndex
+            remainingCardElements[elementIndex].src = "images/" + game.version + "/Image-" + imageIndex + ".jpg";
+            //Et one le retire de la liste
+            remainingCardElements.splice(elementIndex, 1);
+        }
+        //Puis on incrémente l'index de l'image (on ou boucle si il a atteint la limite
+        if (imageIndex == imageNumber) {
+            imageIndex = 1;
+        } else {
+            imageIndex++;
+        }
+
+    }
+}

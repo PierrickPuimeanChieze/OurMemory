@@ -2,7 +2,7 @@
 function init()
 {
     document.getElementById('start').onclick = function() {
-        location.href=("memory.html");
+        location.href=("game_test.html");
     };
 }
 

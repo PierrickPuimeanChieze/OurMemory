@@ -7,11 +7,12 @@ var     game;         //variable contenant toute les information du joueur
 var     nbtest;         //nombre de coup joué.
 var     gameStarted;    //indique si la partie est commencé ou pas.
 var     intervalId = null;
-var     remainingTime;  //temps restant
+//var     remainingTime;  //temps restant
 var     imageNumber;    //Le nombre d'images disponibles dans le repertoire image. Chaque image doit être nommée "Image-<indexNbr>.png
 var     counter;
 var     timegame;
 var     arrayGame;
+var     cards;
 
 // Cette méthode est destiné à être appellée quand la page à fini de se charger
 // Typiquement, c'est dans cette méthode que plus tard, on répartira les cartes de manière aléatoire.
@@ -34,9 +35,9 @@ function init()
     /*arrayGame = load_data("arrayGame");
     game = arrayGame[arrayGame.length - 1];*/
     game = load_data("newGame");
-    remainingTime   = game.gameLimit;
+    //remainingTime   = game.gameLimit;
     initCSS();
-    randomPlacementCards();
+    randomPlacementCards(cards, game);
 
     for (i = 0; i < cards.length; i++)
     {
@@ -181,41 +182,6 @@ function endGame()
  * d'élément suivantes
  * Ceci afin de pouvoir avoir un nombre d'element carte indépendant du nombre d'image.
  */
-function randomPlacementCards()
-{
-    //Ici on créé un tableau modifiable d'element a modifier, ceci afin de pouvoir retirer un element carte quand il a été associé a une image
-    var remainingCardElements = Array.prototype.slice.call( cards );
-    var imageIndex = 1;
-
-    //Si le nombre de cartes à placer est impair
-    if (remainingCardElements.length % 2 >0) {
-        //On affiche une erreur
-        window.alert("WARNING ! Nombre de cartes impaire sur le tableau");
-        //et on arrète la methode
-        return;
-    }
-    Math.seedrandom(game.seed);
-
-    //Pour chacun des element carte restant encore a remplir
-    while (remainingCardElements.length>0) {
-        //Par deux fois
-        for (var i =0; i<2 ;i++) {
-            //On en récupère un au hasard
-            var elementIndex = Math.floor(Math.random()*remainingCardElements.length);
-            //On change sa source pour l'image actuellement pointée par imageIndex
-            remainingCardElements[elementIndex].src = "images/" + game.version + "/Image-" + imageIndex + ".jpg";
-            //Et one le retire de la liste
-            remainingCardElements.splice(elementIndex, 1);
-        }
-        //Puis on incrémente l'index de l'image (on ou boucle si il a atteint la limite
-        if (imageIndex == imageNumber) {
-            imageIndex = 1;
-        } else {
-            imageIndex++;
-        }
-
-    }
-}
 
 /*
 **fonction random qui renvoie un valeur compris entre min inclue et max inclue
