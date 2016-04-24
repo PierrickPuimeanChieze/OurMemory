@@ -24,6 +24,11 @@ function init() {
                 game.likeQuestion = tab[i].value;
                 break;
             }
+            if (i === (tab.length - 1))
+            {
+                alert("Veuillez répondre aux questions.");
+                return ;
+            }
         }
         tab = document.getElementsByName('funQuestion');
         for (i = 0; i < tab.length; i++) {
@@ -31,12 +36,22 @@ function init() {
                 game.funQuestion = tab[i].value;
                 break;
             }
+            if (i === (tab.length - 1))
+            {
+                alert("Veuillez répondre aux questions.");
+                return ;
+            }
         }
         tab = document.getElementsByName('replayQuestion');
         for (i = 0; i < tab.length; i++) {
             if (tab[i].checked) {
                 game.replayQuestion = tab[i].value;
                 break;
+            }
+            if (i === (tab.length - 1))
+            {
+                alert("Veuillez répondre aux questions.");
+                return ;
             }
         }
         arrayGame[arrayGame.length] = game;

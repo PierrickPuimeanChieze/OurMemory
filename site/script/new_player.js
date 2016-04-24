@@ -32,6 +32,13 @@ function validate()
     var i;
     var tab;
 
+    if (!(document.getElementById('firstName').value) || !(document.getElementById('name').value)
+        || !(document.getElementById('birthDate').value) || !(document.getElementById('age').value)
+        || !(document.getElementById('class').value))
+    {
+        alert("Veuillez remplir tout les champ pour continuer.");
+        return ;
+    }
     game.firstname = document.getElementById('firstName').value;
     game.name = document.getElementById('name').value;
     game.birthdate = document.getElementById('birthDate').value;
@@ -45,6 +52,11 @@ function validate()
             game.sex = tab[i].value;
             break;
         }
+        if (i === (tab.length - 1))
+        {
+            alert("Veuillez remplir tout les champ pour continuer.");
+            return ;
+        }
     }
     tab = document.getElementsByName('version');
     for (i=0;i<tab.length;i++)
@@ -53,6 +65,11 @@ function validate()
         {
             game.version = tab[i].value;
             break;
+        }
+        if (i === (tab.length - 1))
+        {
+            alert("Veuillez remplir tout les champ pour continuer.");
+            return ;
         }
     }
     game.date = now.getFullYear() + "-" + ('0'+(now.getMonth()+1)).slice(-2) + "-" + ('0'+now.getDate()).slice(-2);
