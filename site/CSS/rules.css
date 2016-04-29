@@ -1,23 +1,57 @@
-
-article
+body
 {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    height: 550px;
-    background-color: blue;
+    background: url(../images/wallpaper/fondecranG.jpg) no-repeat fixed;
+    background-size: cover;
 }
+
 #rules
 {
     height: 75%;            /*Pas trouver le moyen que cela prennent automatiquement la taille du texte*/
     /*width: 75%;*/
-    background-color: red;
+    /*background-color: red;*/
 }
+
+
 #Button
 {
     display: flex;
-    justify-content:center;
-    align-items: center;
-    /*width: 200px;*/
-    height: 100px;
+    justify-content:left;
 }
+.indexbutton
+{
+    font-size: 0.8em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    width: 150px;
+    background-color: #ffff99;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    box-shadow: 5px 5px 5px #000000;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+.indexbutton:hover
+{
+    width: 150px;
+    background-color: #ffccff;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+.titreformat
+{
+    font-size: 1.3em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: #000000 3px 3px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+}
+.rules
+{
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: #000000 2px 2px;
+    text-align: left;
+    display: flex;
+    align-items: left;
+    height: 150px;
+
+}   

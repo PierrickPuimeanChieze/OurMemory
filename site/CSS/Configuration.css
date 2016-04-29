@@ -1,14 +1,70 @@
+body
+{
+    background: url(../images/wallpaper/fondecranG.jpg) no-repeat fixed;
+    background-size: cover;
+}
 #compteur
 {
     display: flex;
-    align-items: center;
+    align-items: left;
     height: 150px;             /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
     /*background-color: blue;*/   /*pour tester*/
     /*padding : 5px*/
 }
-
 #Button
 {
     display: flex;
-    justify-content:center;
+    justify-content:left;
+}
+.indexbutton
+{
+    font-size: 0.8em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    width: 150px;
+    background-color: #ffff99;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    box-shadow: 8px 8px 12px #000000;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+.indexbutton:hover
+{
+    width: 150px;
+    background-color: #ffccff;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+.titreformat
+{
+    font-size: 1.3em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: #000000 3px 3px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+
+}
+.titre1
+{
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #ffcc33;
+    text-align: left;
+    text-shadow: #000000 2px 2px;
+}
+.titre2
+{
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #ff66ff;
+    text-align: left;
+    text-shadow: #000000 2px 2px;
+}
+.boxform
+{
+    width: 70px;
+    /*border-radius: 7px;*/
+    border: 1px solid #000000;
+    box-shadow: 5px 5px 5px #000000;
+    /* background:url(images/bouton-noir.png) no-repeat; */
 }

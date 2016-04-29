@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html manifest="site.manifest">
+
 <head>
-
     <meta charset="utf-8">
-    <title>Mémory : Version d'essai, resultat</title>
-
+    <link rel="stylesheet" href="CSS/resultat.css" />
+    <title>Mémory - Resultat</title>
     <script type="application/javascript" src="script/Data_management.js"></script>
     <script type="application/javascript" src="script/resultat.js"></script>
 </head>
 
 <body onload="init();" id="body">
-<p>
-    Félicitations <span id="prenom"></span>. Le jeu est terminé.
-</p>
-<div>
-    <p>Voici trois question, veuillez y répondre</p>
-    <ol>
-        <li>1) As-tu aimé ce jeu ? <br/>
-            <input type="radio" name="likeQuestion" value="1" id="1LQ" /> <label for="1LQ">:(</label>
-            <input type="radio" name="likeQuestion" value="2" id="2LQ" /> <label for="2LQ">:|</label>
-            <input type="radio" name="likeQuestion" value="3" id="3LQ" /> <label for="3LQ">:)</label>
-            <input type="radio" name="likeQuestion" value="4" id="4LQ" /> <label for="4LQ">:D</label><br/><br/>
-        </li>
-        <li>2) As-tu trouvé ce jeu rigolo ?<br/>
-            <input type="radio" name="funQuestion" value="oui" id="yesFQ" /> <label for="yesFQ">OUI</label>
-            <input type="radio" name="funQuestion" value="non" id="noFQ" /> <label for="noFQ">NON</label><br/><br/>
-        </li>
-        <li>3)Voudrais-tu rejouer à ce jeu une prochaine fois ?<br/>
-            <input type="radio" name="replayQuestion" value="oui" id="yesRQ" /> <label for="yesRQ">OUI</label>
-            <input type="radio" name="replayQuestion" value="non" id="noRQ" /> <label for="noRQ">NON</label><br/><br/>
-        </li>
 
-    </ol>
-    <input type="submit" id="sends" name="sends" value="Terminer"/>
+<h1 id="titre" class="titreformat">
+    <br /><br /><br />Félicitations <span id="prenom"></span>! Le jeu est terminé<br /><br />
+</h1>
+<p id="T1" class="question1">
+    Voici trois questions — Merci d'y répondre.<br/><br/>
+</p>
+<p id="T2" class="question2">
+    As-tu aimé ce jeu ? <br/><br/>
+</p>
+<div id="T3" class="question3">
+    <input type="radio" name="likeQuestion" value="1" id="1LQ" /> <label for="1LQ">Pas du tout&nbsp;&nbsp;&nbsp;:(</label><br/>
+    <input type="radio" name="likeQuestion" value="2" id="2LQ" /> <label for="2LQ">Un peu&nbsp;&nbsp;&nbsp;:|</label><br/>
+    <input type="radio" name="likeQuestion" value="3" id="3LQ" /> <label for="3LQ">Beaucoup&nbsp;&nbsp;&nbsp;:)</label><br/>
+    <input type="radio" name="likeQuestion" value="4" id="4LQ" /> <label for="4LQ">Enormément&nbsp;&nbsp;&nbsp;:D</label><br/><br/>
 </div>
+<p id="T4" class="question2">
+    As-tu trouvé ce jeu rigolo ?<br/><br/>
+</p>
+<div id="T5" class="question3">
+    <input type="radio" name="funQuestion" value="oui" id="yesFQ" /> <label for="yesFQ">Oui</label>
+    <input type="radio" name="funQuestion" value="non" id="noFQ" /> <label for="noFQ">Non</label><br/><br/>
+</div>
+<p id="T6" class="question2">
+    Voudrais-tu rejouer à ce jeu une prochaine fois ?<br/><br/>
+</p>
+<div id="T7" class="question3">
+    <input type="radio" name="replayQuestion" value="oui" id="yesRQ" /> <label for="yesRQ">Oui</label>
+    <input type="radio" name="replayQuestion" value="non" id="noRQ" /> <label for="noRQ">Non</label><br/><br/>
+</div>
+<div id="Button">
+    <input type="submit" class="indexbutton" id="sends" name="sends" value="Valider"/>
+</div>
+
 </body>
 </html>

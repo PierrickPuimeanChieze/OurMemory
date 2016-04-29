@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="CSS/liste_des_compte.css" />
-    <title>Mémory : Version d'essai, liste des comptes</title>
+    <title>Mémory - Liste des comptes</title>
 
     <script type="application/javascript" src="script/liste_des_compte.js"></script>
     <script type="application/javascript" src="script/Data_management.js"></script>
 </head>
 <body onload="init();">
-<table id="tablePlayers">
-    <tr>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Date de Naissance</th>
-        <th>Age</th>
-        <th>Classe</th>
-        <th>Sexe</th>
-        <th>Version</th>
-        <th>Date de partie</th>
-        <th>Status</th>
-        <th></th>
-    </tr>
-</table>
+<h1 id="titre" class="titreformat">
+    <br /><br /><br />Liste des comptes<br /><br />
+</h1>
+<div id="Tab">
+    <table id="tablePlayers">
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Date de Naissance</th>
+            <th>Age</th>
+            <th>Classe</th>
+            <th>Sexe</th>
+            <th>Version</th>
+            <th>Date de partie</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </table>
+</div>
 <div id="Button">
-    <input type="submit" name="receive" id="receive" value="Receive" />
-    <input type="submit" name="share" id="share" value="Share" />
-    <input type="submit" name="return" id="return" value="Retour" />
+    <br />
+    <input type="submit" class="indexbutton" name="receive" id="receive" value="Receive" />
+    <input type="submit" class="indexbutton" name="share" id="share" value="Share" />
+    <input type="submit" class="indexbutton" name="return" id="return" value="Retour" />
 </div>
 </body>
 </html>

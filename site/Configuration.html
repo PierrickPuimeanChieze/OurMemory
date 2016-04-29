@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html manifest="site.manifest">
-<head lang="en">
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="CSS/Configuration.css" />
-    <title>Mémory : Version d'essai, configuration</title>
+    <title>Mémory - Configuration</title>
 
     <script type="application/javascript" src="script/Data_management.js"></script>
     <script type="application/javascript" src="script/configuration.js"></script>
 </head>
+
 <body onload="init();">
 
-<table id="compteur">
-    <tr>
-        <td><label for="timeGame">Durée de la partie</label></td>
-        <td><input type="number" id="timeGame" name="timeGame" min="1" max="300"/></td>
-    </tr>
-    <tr>
-        <td><label for="timeMemo">Durée de visibilité</label></td>
-        <td><input type="number" id="timeMemo" name="timeMemo" min="1" max="60"/></td>
-    </tr>
-    <tr>
-        <td><label for="seed">Graine de hazard</label></td>
-        <td><input type="text" id="seed" name="seed"/></td>
-    </tr>
-</table>
+<div id="titre" class="titreformat">
+    <br /><br /><br />Paramétrage du jeu<br /><br />
+</div>
+
+<form onsubmit="return false" oninput="resultat.value = timeGame.valueAsNumber;">
+    <div id="duree1" class="titre1">
+        Durée expérimentale de la partie<br />
+        <input id="timeGame" name="timeGame" type="range" min="30" max="300" value="30" step="10" style="width:200px;" />
+        <output id="resultat" for="timeGame" >30</output>
+    </div>
+</form>
+
+<form onsubmit="return false" oninput="resultat.value = timeMemo.valueAsNumber;">
+    <div id="duree2" class="titre2">
+        <br />Affichage initial des images<br />
+        <input id="timeMemo" name="timeMemo" type="range" min="5" max="60" value="5" step="5" style="width:200px;" />
+        <output id="resultat" for="timeMemo">5</output>
+    </div>
+</form>
+
+<form>
+    <div id="graine" class="titre1">
+        <br />Graine de hasard&nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="seed" name="seed" type="text" class="boxform"; />
+        <br /><br /><br />
+    </div>
+</form>
 
 <div id="Button">
-    <input type="submit" id="validate" name="validate" value="Sauvegarder"/>
+    <input type="submit" class="indexbutton" id="validate" name="validate" value="Sauvegarder"/>
 </div>
+
 </body>
 </html>

@@ -1,10 +1,35 @@
-
+body
+{
+    background: url(../images/wallpaper/fondecran.jpg) no-repeat fixed;
+    background-size: cover;
+}
 table
 {
     border-collapse: collapse;
 }
-
-td,th
+td
 {
-    border: 1px solid black;
+    border: 1px solid white;
+    background-color:black;
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: normal;
+    color: white;
+}
+th
+{
+    border: 1px solid white;
+    background-color:black;
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #ffcc33;
+}
+.titreformat
+{
+    font-size: 1.3em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: #000000 3px 3px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
 }

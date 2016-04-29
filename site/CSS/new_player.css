@@ -1,4 +1,22 @@
-
+body
+{
+    background: url(../images/wallpaper/fondecranG.jpg) no-repeat fixed;
+    background-size: cover;
+}
+#compteur
+{
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #ffcc33;
+    text-shadow: #000000 2px 2px;
+    text-align: left;
+    display: flex;
+    align-items: left;
+    height: 280px;             /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
+    /*background-color: blue;*/   /*pour tester*/
+    /*padding : 5px*/
+}
 td
 {
     padding-bottom: 10px;   /*Pour augmenter l'espace entre les lignes*/
@@ -6,8 +24,45 @@ td
 #Button
 {
     display: flex;
-    justify-content:center;
-    align-items: center;
-    width: 200px;
-    height: 100px;
+    justify-content:left;
+}
+.indexbutton
+{
+    font-size: 0.8em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    width: 150px;
+    background-color: #ffff99;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    box-shadow: 5px 5px 5px #000000;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+.indexbutton:hover
+{
+    width: 150px;
+    background-color: #ffccff;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+.titreformat
+{
+    font-size: 1.3em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: #000000 3px 3px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+}
+.asterix
+{
+    font-size: 0.7em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.boxform
+{
+    width: 150px;
+    /*border-radius: 7px;*/
+    border: 1px solid #000000;
+    box-shadow: 5px 5px 5px #000000;
+    /* background:url(images/bouton-noir.png) no-repeat; */
 }

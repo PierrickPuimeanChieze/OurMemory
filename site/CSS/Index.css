@@ -3,34 +3,35 @@ body
     background: url(../images/wallpaper/fondecran.jpg) no-repeat fixed;
     background-size: cover;
 }
+#configButton
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    height: 120px;         /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
+    /* background-color: blue; */    /*pour tester*/
+    /*padding : 5px*/
+}
 #playerButton
 {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 150px;             /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
-    /* background-color: blue; */    /*pour tester*/
-    padding : 5px
-}
-
-#configButton
-{
-    display: flex;
-    /*flex-direction: column;*/
     justify-content: space-between;
-    /*align-items: center;*/
-    /*height: 150px;             /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
+    align-items: left;
+    height: 120px;         /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
     /* background-color: blue; */    /*pour tester*/
-    padding : 5px}
-
+    /*padding : 5px*/
+}
 .indexbutton
 {
+    font-size: 0.8em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
     width: 150px;
     background-color: #ffff99;
     border-radius: 7px;
     border: 1px solid #000000;
-    box-shadow: 8px 8px 12px #000000;
+    box-shadow: 5px 5px 5px #000000;
     /* background:url(images/bouton-noir.png) no-repeat; */
 }
 .indexbutton:hover
@@ -39,12 +40,16 @@ body
     background-color: #ffccff;
     /* background:url(images/bouton-noir.png) no-repeat; */
 }
-/*.indexbutton:nth-child(1)
+/* .indexbutton:nth-child(1)
 {
     align-self: flex-end;
 }
-.indexbutton:nth-child(2)
+*/
+.titreformat
 {
-    align-self: flex-start;
-    justify-content: flex-start;
-}*/
+    font-size: 1.3em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: #000000 3px 3px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+}

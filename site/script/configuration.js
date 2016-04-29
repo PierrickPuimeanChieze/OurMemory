@@ -2,6 +2,8 @@
 /*
  **  fonction initialisation de la page.
  */
+var config;
+
 function init()
 {
     config = load_data("config");

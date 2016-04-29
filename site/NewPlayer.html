@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html manifest="site.manifest">
 <head>
-
     <meta charset="UTF-8">
     <link rel="stylesheet" href="CSS/new_player.css" />
-    <title>Mémory : Version d'essai, Nouveau joueur</title>
+    <title>Mémory - Nouveau joueur</title>
 
-    <script type="application/javascript" src="script/Data_management.js"></script>
     <script type="application/javascript" src="script/new_player.js"></script>
+    <script type="application/javascript" src="script/Data_management.js"></script>
 </head>
+
 <body onload="init();">
 
-<table>
-    <tr>
-        <td><label for="firstName">Prénom</label></td>
-        <td><input type="text" id="firstName" name="firstName" placeholder="Prénom"/></td>
-    </tr>
-    <tr>
-        <td><label for="name">Nom</label></td>
-        <td><input type="text" id="name" name="name" placeholder="Nom"/></td>
-    </tr>
-    <tr>
-        <td><label for="age">Age</label></td>
-        <td><input type="number" id="age" name="age" placeholder="Age" min="1"/></td>
-    </tr>
-    <tr>
-        <td><label for="birthDate">Date de naissance</label></td>
-        <td><input type="date" id="birthDate" name="birthDate" placeholder="2016-01-30"/></td>  <!-- Le type date n'est pas supporté par IE, IE mobile, opera mini, safari et firefox.
+<div id="titre" class="titreformat">
+    <br /><br /><br />Informations joueur<br /><br />
+</div>
+
+<div id="Tab">
+    <table id="compteur">
+        <tr>
+            <td><label for="firstName">Prénom</label></td>
+            <td><input type="text" class="boxform" id="firstName" name="firstName" placeholder="Prénom"/></td>
+        </tr>
+        <tr>
+            <td><label for="name">Nom</label></td>
+            <td><input type="text" class="boxform" id="name" name="name" placeholder="Nom"/></td>
+        </tr>
+        <tr>
+            <td><label for="age">Age</label></td>
+            <td><input type="number" class="boxform" id="age" name="age" placeholder="Age" min="5"/></td>
+        </tr>
+        <tr>
+            <td><label for="birthDate">Date de naissance</label></td>
+            <td><input type="date" class="boxform" id="birthDate" name="birthDate" placeholder="2016-01-30"/></td>  <!-- Le type date n'est pas supporté par IE, IE mobile, opera mini, safari et firefox.
         Il agit dans ce cas comme un type="text"(pas fait de test pousser. De même il n'est que partiellement supporté pas IOS saffari, à voir ce que cela donne-->
-    </tr>
-    <tr>
-        <td><label for="class">Classe</label></td>
-        <td><input type="text" id="class" name="class" placeholder="Classe"/></td>
-    </tr>
-    <tr>
-        <td><input type="radio" name="gender" value="girl" id="girl" /> <label for="girl">Fille</label></td>
-        <td><input type="radio" name="gender" value="boy" id="boy" /> <label for="boy">Garçon</label></td>
-    </tr>
-    <tr>
-        <td><input type="radio" name="version" value="sad" id="standard" /> <label for="standard">Standard</label></td>
-        <td><input type="radio" name="version" value="humors" id="humor" /> <label for="humor">Humour</label></td>
-    </tr>
-</table>
+        </tr>
+        <tr>
+            <td><label for="class">Classe</label></td>
+            <td><input type="text" class="boxform" id="class" name="class" /></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="gender" value="girl" id="girl" /> <label for="girl">Fille</label></td>
+            <td><input type="radio" name="gender" value="boy" id="boy" /> <label for="boy">Garçon</label></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="version" value="sad" id="standard" /> <label for="standard">Jeu Standard</label></td>
+            <td><input type="radio" name="version" value="humors" id="humor" /> <label for="humor">Jeu Humour</label></td>
+        </tr>
+    </table>
+</div>
 
 <div id="Button">
-    <input type="submit" id="validate" name="validate" value="OK"/>
+    <br />
+    <input type="submit" class="indexbutton" id="validate" name="validate" value="Valider"/>
 </div>
+
 </body>
 </html>
