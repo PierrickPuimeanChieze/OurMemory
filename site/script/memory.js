@@ -62,8 +62,8 @@ function clickCard(mouseEvent)
 {
     //var     val;
     //On récupère l'élement sur lequel l'utilisateur a cliqué
-    var     ClipAudio1;
-    var     ClipAudio2;
+    var     clipAudio1;
+    var     clipAudio2;
     var     cardElement = mouseEvent.target;
 
     //Si les classes de cet element indique qu'elle était face cachée
@@ -84,8 +84,16 @@ function clickCard(mouseEvent)
             cardElement.className = "pair-find";
             pairFind++;
 
-            ClipAudio1 = document.getElementById("audioS1");
-            ClipAudio1.play();
+            if (game.version === "sad")
+            {
+                clipAudio1 = document.getElementById("audioS1-w");
+                clipAudio1.play();
+            }
+            else
+            {
+                clipAudio1 = document.getElementById("audioS2-w");
+                clipAudio1.play();
+            }
 
             if (timegame <= game.gameLimit)
                 game.pairsfoundBeforGameLimit = pairFind;
@@ -93,8 +101,16 @@ function clickCard(mouseEvent)
         }
         else
         {
-            ClipAudio2 = document.getElementById("audioS2");
-            ClipAudio2.play();
+            if (game.version === "sad")
+            {
+                clipAudio1 = document.getElementById("audioS1-l");
+                clipAudio1.play();
+            }
+            else
+            {
+                clipAudio1 = document.getElementById("audioS2-l");
+                clipAudio1.play();
+            }
             //alert("raté" + remainingTime + "s.");
             gameStarted = 0;                                            // je met la valeur à zero pour que le joueur
                                                                         // ne puisse modifier les cartes pendant le

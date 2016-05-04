@@ -14,6 +14,18 @@ Réponse.html
 resultat.html
 Rules.html
 
+audio/Bananna.mp3
+audio/Bienjoue.mp3
+audio/ClapClap.mp3
+audio/JouetBebe.mp3
+audio/Klaxon.mp3
+audio/Minion-Rire.mp3
+audio/Oups.mp3
+audio/reveil.mp3
+audio/Rire.mp3
+
+video/minion01.m4v
+
 script/configuration.js
 script/Data_management.js
 script/existing_player.js
@@ -58,6 +70,11 @@ images/sad/Image-12.png
 images/sad/Image-13.png
 images/sad/Image-14.png
 
+images/Smiley/Beaucoup.png
+images/Smiley/Enormement.png
+images/Smiley/PasDuTout.png
+images/Smiley/UnPeu.png
+
 images/wallpaper/fondecran.jpg
 images/wallpaper/fondecranG.jpg
 
@@ -71,4 +88,5 @@ CSS/memory.css
 CSS/memoryhumors.css
 CSS/memorysad.css
 CSS/new_player.css
+CSS/resultat.css
 CSS/rules.css

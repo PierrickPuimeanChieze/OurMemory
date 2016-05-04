@@ -44,14 +44,16 @@ body
 }
 .rules
 {
+    background-color: #ffffff;
+    padding: 5px 5px 5px 5px ;
+    width: 95%;
     font-size: 0.9em;
     font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
     font-weight: bold;
-    color: #ffffff;
-    text-shadow: #000000 2px 2px;
+    color: #000000;
+    /* text-shadow: #000000 2px 2px; */
     text-align: left;
     display: flex;
     align-items: left;
     height: 150px;
-
 }   

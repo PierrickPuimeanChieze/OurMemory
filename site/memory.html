@@ -13,8 +13,9 @@
 </head>
 <!--L'événément onload est appellée dès que le navigateur a fini de construire la page-->
 <body onload="init();">
-<div id="page">
-    <p>Bienvenue <span id="prenom"></span>!</p>
+<div class="page">
+    <p class="titreformat">Bienvenue <span id="prenom"></span>!</p>
+    <div class="tab">
     <table>
         <tr>
             <td class="image-cell"><img class="card back-visible" src="images/sad/Image-1.jpg"/></td>
@@ -61,14 +62,25 @@
             <td class="image-cell"><img class="card back-visible" src="images/sad/Image-2.jpg"/></td>
         </tr>-->
     </table>
-<p id="timer"></p>
+    </div>
+<p id="timer" class="second"></p>
 </div>
 
-<audio id="audioS1" preload=”auto”>
+
+<audio id="audioS1-w" preload=auto>
     <source src="audio/ClapClap.mp3"/>
 </audio>
-<audio id="audioS2" preload=”auto”>
-    <source src="audio/klaxon.mp3"/>
+
+<audio id="audioS1-l" preload=auto>
+    <source src="audio/Oups.mp3"/>
+</audio>
+
+<audio id="audioS2-w" preload=auto>
+    <source src="audio/Bananna.mp3"/>
+</audio>
+
+<audio id="audioS2-l" preload=auto>
+    <source src="audio/Minion-Rire.mp3"/>
 </audio>
 
 </body>
