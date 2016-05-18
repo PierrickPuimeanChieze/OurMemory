@@ -1,9 +1,10 @@
 CACHE MANIFEST
 
-# v0.2.1
+# v0.2.2
 
 CACHE:
 Configuration.html
+donnée.html
 existing_player.html
 game_test.html
 index.html

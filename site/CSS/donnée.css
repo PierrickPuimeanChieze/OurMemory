@@ -1,0 +1,79 @@
+body
+{
+    background: url(../images/wallpaper/fondecran.jpg) no-repeat fixed;
+    background-size: cover;
+}
+table
+{
+    border-collapse: collapse;
+}
+
+td
+{
+    border: 1px solid white;
+    background-color:black;
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: normal;
+    color: white;
+}
+th
+{
+    border: 1px solid white;
+    background-color:black;
+    font-size: 0.9em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #ffcc33;
+}
+.titreformat
+{
+    font-size: 1.3em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: #000000 3px 3px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+}
+/*
+#Button
+{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    width: 600px;
+    height: 100px;
+
+}
+*/
+#Button
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    height: 120px;
+    /* height: 120px;         /*Je me dit que ce n'ai pas parfait pour la mise en page mais je n'ai pas trouver mieux*/
+    /* background-color: blue; */    /*pour tester*/
+    /*padding : 5px*/
+}
+.indexbutton
+{
+    font-size: 0.8em;
+    font-family: Calibri,Verdana,Trebuchet MS,sans-serif;
+    width: 150px;
+    background-color: #ffff99;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    box-shadow: 5px 5px 5px #000000;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+.indexbutton:hover
+{
+    width: 150px;
+    background-color: #ffccff;
+    /* background:url(images/bouton-noir.png) no-repeat; */
+}
+/*#Button:nth-child(3)
+{
+    align-self: flex-end;
+}*/
