@@ -26,7 +26,7 @@ function init() {
             }
             if (i === (tab.length - 1))
             {
-                alert("Veuillez répondre aux questions.");
+                alert("Veuillez r\u00E9pondre aux questions.");
                 return ;
             }
         }
@@ -38,7 +38,7 @@ function init() {
             }
             if (i === (tab.length - 1))
             {
-                alert("Veuillez répondre aux questions.");
+                alert("Veuillez r\u00E9pondre aux questions.");
                 return ;
             }
         }
@@ -50,7 +50,7 @@ function init() {
             }
             if (i === (tab.length - 1))
             {
-                alert("Veuillez répondre aux questions.");
+                alert("Veuillez r\u00E9pondre aux questions.");
                 return ;
             }
         }

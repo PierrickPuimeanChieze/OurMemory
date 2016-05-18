@@ -126,6 +126,6 @@ function    returnCard(cardReturned, cardElement)
 function endGame()
 {
     clearInterval(intervalId);
-    alert("Bravo, tu a réussi");
-    location.href=("memory.html");
+    alert("Bravo, tu a r\u00E9ussi");
+    setTimeout( function () {location.href=("memory.html");}, 2000);
 }

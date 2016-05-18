@@ -46,7 +46,7 @@ function init()
     }
 
     //P.S. : on aurait pu effectuer cette association dans le code html directement, via l'attribut onclick
-    //Exemple : <img class="card back-visible" src="images/sad/Image-1.png" onclick="clickCard(event);"/>
+    //Exemple : <img class="card_back-visible" src="images/sad/Image-1.png" onclick="clickCard(event);"/>
     //C'est toutefois à éviter quand tu fais une application complexe.
     // En effet, cela mélange la présentation (le code HTML) et la logique (le code javascript)
     // Ce qui pose pas mal de probleme pour maintenir ton application
@@ -63,11 +63,11 @@ function clickCard(mouseEvent)
     //var     val;
     //On récupère l'élement sur lequel l'utilisateur a cliqué
     var     clipAudio1;
-    var     clipAudio2;
+    //var     clipAudio2;
     var     cardElement = mouseEvent.target;
 
     //Si les classes de cet element indique qu'elle était face cachée
-    if (cardElement.className === "card back-visible" && gameStarted === 1)
+    if (cardElement.className === "card_back-visible" && gameStarted === 1)
     {
         //On la passe face visible
         cardElement.className = "card front-visible";
@@ -118,8 +118,8 @@ function clickCard(mouseEvent)
             setTimeout(returnCard, 2000, cardReturned, cardElement);    // laisse les carte retourné, à voir si on
                                                                         // laisse la durée en dure on si on peut la
                                                                         // la modifier avec une variable.
-            //cardReturned.className = "card back-visible";
-            //cardElement.className = "card back-visible";
+            //cardReturned.className = "card_back-visible";
+            //cardElement.className = "card_back-visible";
             //alert("raté" + remainingTime + "s.");
         }
         nbtest++;
@@ -129,7 +129,7 @@ function clickCard(mouseEvent)
         cReturn = 0;
     }
     if (imageNumber === pairFind)
-        endGame();
+        setTimeout(endGame, 5000);
 }
 
 /*
@@ -137,8 +137,8 @@ function clickCard(mouseEvent)
  */
 function    returnCard(cardReturned, cardElement)
 {
-    cardReturned.className = "card back-visible";
-    cardElement.className = "card back-visible";
+    cardReturned.className = "card_back-visible";
+    cardElement.className = "card_back-visible";
     gameStarted = 1;
 }
 
@@ -175,7 +175,7 @@ function endTimer()
     var     i;
 
     for (i = 0; i < cards.length; i++)
-        cards[i].className = "card back-visible";
+        cards[i].className = "card_back-visible";
     clearInterval(intervalId);
     gameStarted = 1;
     document.getElementById("timer").innerHTML = "La partie est en cours.";

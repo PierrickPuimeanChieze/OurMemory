@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# v0.2.0
+# v0.2.1
 
 CACHE:
 Configuration.html
@@ -10,9 +10,9 @@ index.html
 liste_des_comptes.html
 memory.html
 NewPlayer.html
-Réponse.html
 resultat.html
 Rules.html
+Réponse.html
 
 audio/Bananna.mp3
 audio/Bienjoue.mp3

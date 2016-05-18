@@ -35,16 +35,22 @@ function init()
             newCell = newRow.insertCell(4);
             newCell.innerHTML = compte.classe;
             newCell = newRow.insertCell(5);
-            newCell.innerHTML = compte.sex;
+            if (compte.sex === "boy")
+                newCell.innerHTML = "gar&ccedil;on";
+            if (compte.sex === "girl")
+                newCell.innerHTML = "fille";
             newCell = newRow.insertCell(6);
-            newCell.innerHTML = compte.version;
+            if ( compte.version === "humors")
+                newCell.innerHTML = "marrante";
+            if ( compte.version === "sad")
+                newCell.innerHTML = "classique";
             newCell = newRow.insertCell(7);
             newCell.innerHTML = compte.date;
             newCell = newRow.insertCell(8);
             if (compte.id === "")
-                newCell.innerHTML = 'Unsent';
+                newCell.innerHTML = 'En attente';
             else
-                newCell.innerHTML = 'Sent';
+                newCell.innerHTML = 'Envoyé';
             newCell = newRow.insertCell(9);
             newCell.innerHTML = '<input type="checkbox" name="sent" id="' + i + '" />';
         }

@@ -17,23 +17,25 @@
 
 <form onsubmit="return false" oninput="resultat.value = timeGame.valueAsNumber;">
     <div id="duree1" class="titre1">
-        Durée expérimentale de la partie<br />
-        <input id="timeGame" name="timeGame" type="range" min="30" max="300" value="30" step="10" style="width:200px;" />
-        <output id="resultat" for="timeGame" >30</output>
+        <label for="timeGame">Durée expérimentale de la partie</label><br />
+        <input id="timeGame" name="timeGame" type="range" min="30" max="300" value="30" step="10" style="width:200px;" oninput="document.getElementById('txttimeGame').textContent=value"/>
+        <!--<output name="txttimeGame" for="timeGame" >30</output>-->
+        <span id="txttimeGame"></span>
     </div>
 </form>
 
 <form onsubmit="return false" oninput="resultat.value = timeMemo.valueAsNumber;">
     <div id="duree2" class="titre2">
-        <br />Affichage initial des images<br />
-        <input id="timeMemo" name="timeMemo" type="range" min="5" max="60" value="5" step="5" style="width:200px;" />
-        <output id="resultat" for="timeMemo">5</output>
+        <br /><label for="timeMemo">Affichage initial des images</label><br />
+        <input id="timeMemo" name="timeMemo" type="range" min="5" max="60" value="5" step="5" style="width:200px;" oninput="document.getElementById('txttimeMemo').textContent=value"/>
+        <!--<output name="txttimeMemo" for="timeMemo">5</output>-->
+        <span id="txttimeMemo"></span>
     </div>
 </form>
 
 <form>
     <div id="graine" class="titre1">
-        <br />Graine de hasard&nbsp;&nbsp;&nbsp;&nbsp;
+        <br /><label for="seed">Graine de hasard&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <input id="seed" name="seed" type="text" class="boxform" />
         <br /><br /><br />
     </div>

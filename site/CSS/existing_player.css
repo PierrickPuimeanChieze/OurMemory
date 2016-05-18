@@ -33,3 +33,8 @@ th
     color: #FFFFFF;
     text-shadow: #000000 3px 3px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
 }
+
+#tablePlayers
+{
+    margin-top: 85px;
+}

@@ -32,14 +32,20 @@ function init()
         newCell = newRow.insertCell(4);
         newCell.innerHTML = compte.classe;
         newCell = newRow.insertCell(5);
-        newCell.innerHTML = compte.sex;
+        if (compte.sex === "boy")
+            newCell.innerHTML = "gar&ccedil;on";
+        if (compte.sex === "girl")
+            newCell.innerHTML = "fille";
         newCell = newRow.insertCell(6);
-        newCell.innerHTML = compte.version;
+        if ( compte.version === "humors")
+            newCell.innerHTML = "marrante";
+        if ( compte.version === "sad")
+            newCell.innerHTML = "classique";
         newCell = newRow.insertCell(7);
         newCell.innerHTML = compte.date;
         newCell = newRow.insertCell(8);
         //newCell.innerHTML = '<a href="NewPlayer.html?id=' + i + '">button</a>';     /*surement mieux à faire, trouver un motyen de detecter de quelle page on vient sur New player*/
-        newCell.innerHTML = '<input type="submit" id="' + i + '" name="creategame" value="Button"/>';
+        newCell.innerHTML = '<input type="submit" id="' + i + '" name="creategame" value="OK"/>';
     }
     button = document.getElementsByName("creategame");
     for (i = 0; i < button.length; i++)

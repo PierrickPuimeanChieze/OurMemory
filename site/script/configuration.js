@@ -34,7 +34,9 @@ function updateConfig()
 function updatePage()
 {
     document.getElementById('timeGame').value = config.time;
+    document.getElementById('txttimeGame').textContent = config.time;
     document.getElementById('timeMemo').value = config.counter;
+    document.getElementById('txttimeMemo').textContent = config.counter;
     document.getElementById('seed').value = config.seed;
 }
 
