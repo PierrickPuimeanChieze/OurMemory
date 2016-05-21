@@ -2,16 +2,16 @@
 <head>
     <script type="application/javascript">
         function init() {
-            arrayGame = load_data("arrayGame");
-            index = 0;
-            body = document.getElementsByTagName("body")
-            body.innerHTML=arrayGame[index]
+            arrayGameJSON = window.localStorage.getItem(String("arrayGame"));
+            alert(arrayGameJSON);
+            document.body.innerHTML = arrayGameJSON;
         }
     </script>
     <script type="application/javascript" src="script/Data_management.js"></script>
 
 </head>
-<body>
+<body onload="init();">
+xwxw
 
 </body>
 
