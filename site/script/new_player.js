@@ -75,7 +75,10 @@ function validate()
     game.date = ('0'+now.getDate()).slice(-2) + "-" + ('0'+(now.getMonth()+1)).slice(-2) + "-" + now.getFullYear();
     val = JSON.stringify(game);
     window.localStorage.setItem("newGame", val);
-    location.href=("Rules.html");
+    if (game.version === "sad")
+        location.href=("Rules.html");
+    else
+        location.href=("RulesM.html");
 }
 
 function prefilling()

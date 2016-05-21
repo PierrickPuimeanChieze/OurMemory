@@ -63,7 +63,7 @@ function clickCard(mouseEvent)
     //var     val;
     //On récupère l'élement sur lequel l'utilisateur a cliqué
     var     clipAudio1;
-    //var     clipAudio2;
+    var     clipAudio2;
     var     cardElement = mouseEvent.target;
 
     //Si les classes de cet element indique qu'elle était face cachée

@@ -6,7 +6,7 @@ function init()
     //game = load_data("newGame");
 
     //if(game.version === "sad") {
-        document.getElementById("titre").style.visibility="hidden";
+        //document.getElementById("titre").style.visibility="hidden";
     //}
     document.getElementById('start').onclick = function() {
         location.href=("game_test.html");
