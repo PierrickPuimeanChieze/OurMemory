@@ -14,7 +14,7 @@ function load_data(id)
     return data;
 }
 
-function save_data_as_json(id, data )
+function saveDataAsJson(id, data )
 {
     var dataAsJson = JSON.stringify(data);
     window.localStorage.setItem(String(id), dataAsJson);
@@ -32,11 +32,29 @@ function create_config()
         //version: "humors",
         time: 45,           //durée du chrono en secondes.
         counter: 45,         //durée pendant laquelle les carte sont face visible avant le debut de la partie, en secondes.
-        seed: "test"        //code de disposition aléatoire
+        seed: "test",        //code de disposition aléatoire
         //nbpair: 6,          //Nombre de paire du jeu.
         //nbgame: 0           //Nombre de partie créé.
+        host: "http://192.168.99.100:9090/"
     };
 
+    return config;
+}
+
+function initConfig(config)
+{
+    if(!config.time) {
+        config.time = 45;
+    }
+    if(!config.counter) {
+        config.counter = 45;
+    }
+    if(!config.seed) {
+        config.seed = "test";
+    }
+    if(!config.host) {
+        config.host = "http://192.168.99.100:9090/";
+    }
     return config;
 }
 

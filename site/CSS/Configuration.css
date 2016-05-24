@@ -68,3 +68,8 @@ body
     box-shadow: 5px 5px 5px #000000;
     /* background:url(images/bouton-noir.png) no-repeat; */
 }
+
+input#host
+{
+    width: 360px;
+}

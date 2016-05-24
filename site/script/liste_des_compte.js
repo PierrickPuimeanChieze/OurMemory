@@ -2,7 +2,6 @@
  * Created by Shimishsar on 22/04/2016.
  **/
 
-var host = 'http://192.168.99.100:9090/games';
 //This array will hold all the status cells. Useful for dynamically updating status when sending information
 var statusCells = [];
 var checkCells = [];
@@ -54,13 +53,13 @@ function init() {
                 statusCell.innerHTML = 'Envoyé. Id:' + compte.id;
             var checkCell = newRow.insertCell(9);
             if (compte.id === "")
-                checkCell.innerHTML = '<input type="checkbox" name="sent" id="' + i + '" value="' + i + '"/>';
+                checkCell.innerHTML = '<input type="checkbox" name="sent" id="' + i + '" value="' + i + '" checked="true"/>';
             checkCells[i] = checkCell;
         }
     }
 }
 
-function sendGame(gameToSent) {
+function sendGame(host, gameToSent) {
     var gameJson = JSON.stringify(gameToSent);
     var req = new window.XMLHttpRequest();
 
@@ -75,6 +74,14 @@ function sentSelectedGames() {
         alert("Unable to sent. XMLHttpRequest not available for this browser");
         return;
     }
+    var config = load_data("config");
+
+    var path = config.host;
+    if (!path) {
+        alert("no Save Server defined. please configure");
+    }
+    path = path+"/games";
+    
     var arrayGames = load_data("arrayGame");
     //We retrieve the selected checkboxes
     var checkedBoxes = document.querySelectorAll('input[name=sent]:checked');
@@ -88,13 +95,13 @@ function sentSelectedGames() {
                 alert("game " + gameToSent.id + " cannot be sent. Already Sent");
                 return;
             }
-            var newId = sendGame(gameToSent);
+            var newId = sendGame(path, gameToSent);
             gameToSent.id = newId;
             arrayGames[gameIndex] = gameToSent;
             statusCells[gameIndex].innerHTML = 'Envoyé. Id:' + newId;
             checkCells[gameIndex].innerHTML = '';
         }
     }
-    save_data_as_json("arrayGame", arrayGames);
+    saveDataAsJson("arrayGame", arrayGames);
     
 }
