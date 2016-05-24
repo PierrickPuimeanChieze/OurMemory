@@ -5,6 +5,7 @@
 /*
 **  fonction pour charger les donnés sauvegarder
  */
+var defaultHost = "http://94.23.212.152:5013"
 function load_data(id)
 {
     var     data;
@@ -40,7 +41,7 @@ function create_config()
         seed: "test",        //code de disposition aléatoire
         //nbpair: 6,          //Nombre de paire du jeu.
         //nbgame: 0           //Nombre de partie créé.
-        host: "http://192.168.99.100:9090/"
+        host: defaultHost
     };
 
     return config;
@@ -58,7 +59,7 @@ function initConfig(config)
         config.seed = "test";
     }
     if(!config.host) {
-        config.host = "http://192.168.99.100:9090/";
+        config.host = defaultHost;
     }
     return config;
 }
