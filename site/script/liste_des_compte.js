@@ -142,8 +142,11 @@ function retrieveGames() {
     var returnedGames = JSON.parse(req.responseText);
 
     if (returnedGames.length>0) {
-        var finalGames = arrayGames.concat(returnedGames);
-        saveDataAsJson("arrayGame", finalGames);
+        if (arrayGames !== null) {
+            saveDataAsJson("arrayGame", arrayGames.concat(returnedGames));
+        } else {
+            saveDataAsJson("arrayGame", returnedGames);
+        }
         document.location.reload(true);
     }
 

@@ -9,9 +9,14 @@ function load_data(id)
 {
     var     data;
 
-    data = JSON.parse(window.localStorage.getItem(String(id)));
+    var item = window.localStorage.getItem(String(id));
+    if (item) {
+        data = JSON.parse(item);
+        return data;
+    } else {
+        return null;
+    }
 
-    return data;
 }
 
 function saveDataAsJson(id, data )
