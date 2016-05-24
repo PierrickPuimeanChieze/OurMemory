@@ -80,8 +80,8 @@ function sentSelectedGames() {
     if (!path) {
         alert("no Save Server defined. please configure");
     }
-    path = path+"/games";
-    
+    path = path + "/games";
+
     var arrayGames = load_data("arrayGame");
     //We retrieve the selected checkboxes
     var checkedBoxes = document.querySelectorAll('input[name=sent]:checked');
@@ -103,5 +103,50 @@ function sentSelectedGames() {
         }
     }
     saveDataAsJson("arrayGame", arrayGames);
-    
+
+}
+
+function retrieveGames() {
+    if (!window.XMLHttpRequest) {
+        alert("Unable to retrieve. XMLHttpRequest not available for this browser");
+        return;
+    }
+    var config = load_data("config");
+
+    var path = config.host;
+    if (!path) {
+        alert("no Save Server defined. please configure");
+    }
+    path = path + "/games";
+
+    var req = new window.XMLHttpRequest();
+    var arrayGames = load_data("arrayGame");
+
+    if (arrayGames !== null) {
+        var excludedIds = [];
+        for (i = 0; i < arrayGames.length; i++) {
+            var gameId = arrayGames[i].id;
+            if (gameId) {
+                excludedIds.push(gameId);
+            }
+        }
+        if (excludedIds.length >0) {
+            path += "?excludedIds=" + excludedIds.join(",");
+        }
+    }
+
+
+    req.open('GET', path, false);
+    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    req.send(null);
+    var returnedGames = JSON.parse(req.responseText);
+
+    if (returnedGames.length>0) {
+        var finalGames = arrayGames.concat(returnedGames);
+        saveDataAsJson("arrayGame", finalGames);
+        document.location.reload(true);
+    }
+
+
+
 }
