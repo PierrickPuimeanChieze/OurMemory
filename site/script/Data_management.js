@@ -14,6 +14,12 @@ function load_data(id)
     return data;
 }
 
+function save_data_as_json(id, data )
+{
+    var dataAsJson = JSON.stringify(data);
+    window.localStorage.setItem(String(id), dataAsJson);
+}
+
 /*
 **  Fonction qui crée la configuration par default. Peut être mettre cette option dans la configuration sans toucher
 **  à la variable du nombre de compte.
