@@ -4,13 +4,14 @@
         function init() {
             arrayGameJSON = window.localStorage.getItem(String("arrayGame"));
             alert(arrayGameJSON);
-            document.body.innerHTML = arrayGameJSON;
+            document.getElementById("dumpZone").value =arrayGameJSON
         }
     </script>
     <script type="application/javascript" src="script/Data_management.js"></script>
 
 </head>
 <body onload="init();">
+<textarea id="dumpZone" style="width: 100%;height: 850px"></textarea>
 </body>
 
 </html>
