@@ -1,11 +1,12 @@
 CACHE MANIFEST
 
-# v0.2.2
+# v0.2.3
 
 CACHE:
 Configuration.html
 donnee.html
 existing_player.html
+game-raw-data.html
 game_test.html
 index.html
 liste_des_comptes.html
@@ -13,7 +14,9 @@ memory.html
 NewPlayer.html
 resultat.html
 Rules.html
+RulesM.html
 Réponse.html
+
 
 audio/Bananna.mp3
 audio/Bienjoue.mp3
@@ -22,6 +25,10 @@ audio/JouetBebe.mp3
 audio/Klaxon.mp3
 audio/Minion-Rire.mp3
 audio/Oups.mp3
+audio/Pet.mp3
+audio/Pet1.mp3
+audio/Pet2.mp3
+audio/Pouet.mp3
 audio/reveil.mp3
 audio/Rire.mp3
 
@@ -29,6 +36,7 @@ video/minion01.m4v
 
 script/configuration.js
 script/Data_management.js
+script/donnee.js
 script/existing_player.js
 script/game_test.js
 script/index.js
